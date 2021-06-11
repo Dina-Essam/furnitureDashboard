@@ -1,0 +1,84 @@
+<div class="pcoded-content">
+    <!-- Page-header start -->
+    <div class="page-header" >
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="page-header-title">
+                        <h5 class="m-b-10">Customer</h5>
+                        <p class="m-b-0">Welcome to La Maderas</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <ul class="breadcrumb-title">
+                        <li class="breadcrumb-item">
+                            <a [routerLink]="['/dashboard']"> <i class="fa fa-home"></i> </a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a [routerLink]="['/dashboard/customers']">Customers</a>
+                        </li>
+                        <li class="breadcrumb-item"><a>Customer</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page-header end -->
+        <div class="pcoded-inner-content" >
+            <!-- Main-body start -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- Page-body start -->
+                    <div class="page-body">
+                        <div class="row">
+                            <!-- task, page, download counter  start -->
+                            <!-- Hover table card start -->
+                            <div class="col card">
+                                <div class="card-header">
+                                    <h3>{{customer.custName}}</h3>
+                                    <div class="card-header-right">
+                                        <ul class="list-unstyled card-option">
+                                            <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                            <li><i class="fa fa-window-maximize full-card"></i></li>
+                                            <li><i class="fa fa-minus minimize-card"></i></li>
+                                            <li><i class="fa fa-refresh reload-card"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card-block">
+                                    <div class="card p-5">
+                                        <div class="text-center">
+                                            <img class="card-img-top rounded img-thumbnail img-fluid w-50" src="assets/images/avatar-4.jpg" alt="Card image cap">
+                                        </div>
+                                        <div class="card-body">
+                                        <h5 class="card-title">{{customer.custName}}</h5>
+                                        <p class="card-text" *ngIf="customer.custEmail">Email : {{customer.custEmail}}</p>
+                                        <p class="card-text" *ngIf="customer.custPassword">Password : {{customer.custPassword}}</p>
+                                        <p class="card-text" *ngIf="customer.createOn">create On : {{customer.createOn | date:'MM/dd/yyyy h:mm a'}}</p>
+                                        <p class="card-text">Status : {{customer.verifiedFlg === 1 ? 'Verified' : 'Unverified'}}</p>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item" *ngIf="customer.custPhone">Phone : {{customer.custPhone}}</li>
+                                            <li class="list-group-item" *ngIf="customer.custCity">City : {{customer.custCity}}</li>
+                                            <li class="list-group-item" *ngIf="customer.custCountry">Country : {{customer.custCountry}}</li>
+                                        </ul>
+                                        <div class="card-body">
+                                            <div class="col mb-3">
+                                                <button class="btn waves-effect waves-light btn-outline-danger float-right" (click)="deleteCustomer()" ><i class="ti-trash"></i>Delete Customer</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        <!-- Hover table card end -->
+                            <!--  project and team member end -->
+                        </div>
+                    </div>
+                    <!-- Page-body end -->
+                </div>
+                <div id="styleSelector"> </div>
+            </div>
+        </div>
+</div>

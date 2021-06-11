@@ -1,0 +1,115 @@
+
+        <div class="pcoded-content">
+            <!-- Page-header start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Edit Discount</h5>
+                                <p class="m-b-0">Welcome to La Maderas</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <ul class="breadcrumb-title">
+                                <li class="breadcrumb-item">
+                                    <a [routerLink]="['/dashboard']"> <i class="fa fa-home"></i> </a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a [routerLink]="['/discounts']">Discounts</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a>Edit Discount</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page-header end -->
+              <div class="pcoded-inner-content">
+                  <!-- Main-body start -->
+                  <div class="main-body">
+                      <div class="page-wrapper">
+                          <!-- Page-body start -->
+                          <div class="page-body">
+                              <div class="row">
+                                  <!-- task, page, download counter  start -->
+                                  <!-- Hover table card start -->
+                                  <div class="col">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Edit Discount</h5>
+                                        </div>
+                                        <div class="card-block">
+                                            <form class="form-material" [formGroup]="editDiscountForm" (ngSubmit)="EditDiscount()" >
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="text" name="discountRate" class="form-control"
+                                                        value="{{discount.discountRate}}" formControlName="discountRate"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.discountRate.errors }" 
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">Discount Rate</label>
+                                                    <div *ngIf="submitted && f.discountRate.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.discountRate.errors!.required">Discount Rate is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.discountRate.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.discountRate.errors?.serverError }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="date" name="startDate" class="form-control" 
+                                                    value="{{discount.startDate}}" formControlName="startDate"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }" 
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">Start Date</label>
+                                                    <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.startDate.errors!.required">Start Date is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.startDate.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.startDate.errors?.serverError }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-default pb-2">
+                                                    <div>
+                                                        <input type="date" name="expirDate" class="form-control"
+                                                        value="{{discount.expirDate}}" formControlName="expirDate"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.expirDate.errors }" 
+                                                        >
+                                                        <span class="form-bar"></span>
+                                                        <label class="float-label">Expire Date</label>
+                                                        <div *ngIf="submitted && f.expirDate.errors" class="invalid-feedback">
+                                                            <div *ngIf="f.expirDate.errors!.required">Expire Date is required</div>
+                                                        </div>
+                                                        <div *ngIf="f.expirDate.errors?.serverError" class="invalid-feedback">
+                                                            {{ f.expirDate.errors?.serverError }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-default pb-2">
+                                                    <div class="custom-control form-control-lg custom-checkbox">
+                                                        <input class="custom-control-input" type="checkbox" name="enabled" id="enabled"
+                                                        value="{{discount.enabled}}" formControlName="enabled"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.enabled.errors }"
+                                                        (change)="discount.enabled = discount.enabled ? 1: 0">
+                                                        <label class="custom-control-label base-color" for="enabled">Enabled</label>
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary base-bg border-base btn-md waves-effect waves-light text-center float-right mr-5">Edit</button>
+                                            </form>
+                                            <app-spinner [loading]="loading"></app-spinner>
+                                        </div>
+                                    </div>
+                                </div>
+                                  <!-- Hover table card end -->
+                                  <!--  project and team member end -->
+                              </div>
+                          </div>
+                          <!-- Page-body end -->
+                      </div>
+                      <div id="styleSelector"> </div>
+                  </div>
+              </div>
+        </div>
+    

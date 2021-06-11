@@ -1,0 +1,15 @@
+.custom-checkbox .custom-control-input:checked~.custom-control-label::after{
+    border-color: var(--base-color) !important;
+}
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before{
+    background-color:var(--base-color) !important;
+    border-color: var(--base-color) !important;
+}
+/** focus shadow pinkish **/
+.custom-checkbox .custom-control-input:focus~.custom-control-label::before{
+    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem var(--base-color); 
+}
+
+.custom-control-label{
+    font-size: 1rem;
+}

@@ -1,0 +1,88 @@
+<div class="pcoded-content">
+    <!-- Page-header start -->
+    <div class="page-header">
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="page-header-title">
+                        <h5 class="m-b-10">Colors</h5>
+                        <p class="m-b-0">Welcome to La Maderas</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <ul class="breadcrumb-title">
+                        <li class="breadcrumb-item">
+                            <a [routerLink]="['/dashboard']"> <i class="fa fa-home"></i> </a>
+                        </li>
+                        <li class="breadcrumb-item"><a>Colors</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page-header end -->
+        <div class="pcoded-inner-content">
+            <!-- Main-body start -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- Page-body start -->
+                    <div class="page-body">
+                        <div class="row">
+                            <div class="col mb-3">
+                            <button class="btn waves-effect waves-light btn-outline-success float-right" [routerLink]="['create-color']" ><i class="ti-plus"></i>Add Color</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- task, page, download counter  start -->
+                            <!-- Hover table card start -->
+                            <div class="col card">
+                            <div class="card-header">
+                                <h5>Colors Table</h5>
+                                <div class="card-header-right">
+                                    <ul class="list-unstyled card-option">
+                                        <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                        <li><i class="fa fa-window-maximize full-card"></i></li>
+                                        <li><i class="fa fa-minus minimize-card"></i></li>
+                                        <li><i class="fa fa-refresh reload-card"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-block table-border-style">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Number</th>
+                                                <th>Name in Arabic</th>
+                                                <th>Name in English</th>
+                                                <th>Color Code</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let color of colors">
+                                                <th scope="row">{{color.colorNo}}</th>
+                                                <td>{{color.colorNmAr}}</td>
+                                                <td>{{color.colorNmEn}}</td>
+                                                <td><div class='p-1' [ngStyle]="{'background-color': color.colorCode}"></div>{{color.colorCode}}</td>
+                                                <td>
+                                                    <a [routerLink]="" (click)="updateColor(color)"><i class="ti-pencil base-color"></i><b class="base-color">Edit</b></a><br>
+                                                    <a [routerLink]="" (click)="deleteColor(color)"><i class="ti-trash base-color"></i><b class="base-color">Delete</b></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Hover table card end -->
+                            <!--  project and team member end -->
+                        </div>
+                    </div>
+                    <!-- Page-body end -->
+                </div>
+                <div id="styleSelector"> </div>
+            </div>
+        </div>
+</div>

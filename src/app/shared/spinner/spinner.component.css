@@ -1,0 +1,16 @@
+.theme-loader-inner {
+    height: 100%;
+    width: 100%;
+    background: rgba(71, 70, 70, 0.247);
+    position: fixed;
+    z-index: 999999;
+    top: 0;
+    left: 0; }
+    .theme-loader-inner .loader-track {
+      left: 50%;
+      top: 50%;
+      position: absolute;
+      display: block;
+      width: 50px;
+      height: 50px;
+      margin: -25px 0 0 -25px; }
