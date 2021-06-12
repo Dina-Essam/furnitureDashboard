@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { environment } from 'src/environments/environment';
 import { mainFunctions } from 'src/main';
 
@@ -11,7 +12,11 @@ export class NavbarComponent implements OnInit {
 
   Languages=environment.languages;
   currentLang = mainFunctions.currentLange;
-  constructor() { }
+  adminData:any;
+
+  constructor(private authService:AuthService) {  
+    this.adminData =  authService.getAdminData();
+   }
 
   ngOnInit(): void {
   }
