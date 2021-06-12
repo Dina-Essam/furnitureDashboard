@@ -27,12 +27,12 @@ export class mainFunctions
     return request;
   }
 
-  static getError(error:Array<any>):Array<any>
+  static getError(error:Array<any>):{[key: string]: any}
   {
-    let validationErrors: Array<any>=[];
+    let validationErrors: {[key: string]: any}={};
 
     error.forEach(element => {
-      validationErrors.push({[element.name]:element.error})
+      validationErrors[element.fldNm]=element.errMsg;
     });
 
     return validationErrors;

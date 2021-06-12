@@ -14,6 +14,7 @@ import { AllCustomersComponent } from './components/customers/all-customers/all-
 import { GetCustomerByIdComponent } from './components/customers/get-customer-by-id/get-customer-by-id.component';
 import { AllDiscountsComponent } from './components/discounts/all-discounts/all-discounts.component';
 import { EditDiscountComponent } from './components/discounts/edit-discount/edit-discount.component';
+import { AllTaxesComponent } from './components/taxes/all-taxes/all-taxes.component';
 
 const routes =[
   {
@@ -62,6 +63,16 @@ const routes =[
       },
       {
         path: 'discounts/update-discount/:id',
+        component: EditDiscountComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'taxes',
+        component: AllTaxesComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'taxes/update-tax/:id',
         component: EditDiscountComponent,
         canActivate: [AuthGuard],
       },

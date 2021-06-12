@@ -33,6 +33,7 @@ export class AllDiscountsComponent implements OnInit {
         ,createOn: discount.createOn 
         ,startDate: discount.startDate
         ,expirDate: discount.expirDate
+        ,discountMaxValue: discount.discountMaxValue
         ,enabled: discount.enabled
         ,createAdm: discount.createAdm
       }

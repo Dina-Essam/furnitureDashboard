@@ -50,6 +50,7 @@
                                                 <tr>
                                                     <th>Number</th>
                                                     <th>Discount Rate</th>
+                                                    <th>Discount Max Value</th>
                                                     <th>Start Date</th>
                                                     <th>Expir Date</th>
                                                     <th>Status</th>
@@ -61,6 +62,7 @@
                                                 <tr *ngFor="let discount of discounts">
                                                     <th scope="row">{{discount.discountNo}}</th>
                                                     <td>{{discount.discountRate}}</td>
+                                                    <td>{{discount.discountMaxValue}}</td>
                                                     <td>{{discount.startDate}}</td>
                                                     <td>{{discount.expirDate}}</td>
                                                     <td>{{discount.enabled === 1 ? 'Enabled' : 'Disabled'}}</td>

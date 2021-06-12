@@ -11,11 +11,12 @@ import { mainFunctions } from 'src/main';
 })
 export class EditDiscountComponent implements OnInit {
 
-  discount: { discountNo:number 
+  discount!: { discountNo:number 
               ,discountRate: string
               ,createOn: string
               ,startDate: string
               ,expirDate: string
+              ,discountMaxValue:number|null
               ,enabled: number
               ,createAdm: number };
   editDiscountForm!: FormGroup;
@@ -25,39 +26,47 @@ export class EditDiscountComponent implements OnInit {
   constructor(private discountServise:DiscountService , private router:Router,private formBuilder: FormBuilder) {
 
     const navigation = this.router.getCurrentNavigation();
-    if(navigation)
-      this.discount = navigation.extras.state as { discountNo:number 
+
+    if(navigation && navigation.extras?.state)
+      this.discount = navigation.extras.state as { 
+        discountNo:number 
         ,discountRate: string
         ,createOn: string
         ,startDate: string
         ,expirDate: string
+        ,discountMaxValue:number|null
         ,enabled: number
         ,createAdm: number };
     else
-    {
-      this.discount = { discountNo:1 
-        ,discountRate: ''
-        ,createOn: ''
-        ,startDate: '2021-03-31'
-        ,expirDate: '2021-03-12'
-        ,enabled: 1
-        ,createAdm: 1 };
+      {
+        this.discount = { 
+          discountNo:-1 
+          ,discountRate: ''
+          ,createOn: ''
+          ,startDate: '2021-03-31'
+          ,expirDate: '2021-03-12'
+          ,discountMaxValue:null
+          ,enabled: 1
+          ,createAdm: 1 };
         this.router.navigate(['/dashboard/discounts']);
-
-    }
-
+      }
+      
    }
 
   ngOnInit(): void {
 
     this.editDiscountForm = this.formBuilder.group({
-      discountRate: ['', [Validators.required]],
+      discountNo:[this.discount.discountNo],
+      createOn:[this.discount.createOn],
+      createAdm:[this.discount.createAdm],
+      discountRate: ['', [Validators.required, Validators.pattern('\\d+([.]\\d+)?')]],
+      discountMaxValue:[''],
       startDate: ['', [Validators.required]],
       expirDate: ['', [Validators.required]],
       enabled: ['', [Validators.required]]
     });
 
-
+    this.editDiscountForm.setValue(this.discount);
   }
   get f() { return this.editDiscountForm.controls; }
 
@@ -65,20 +74,20 @@ export class EditDiscountComponent implements OnInit {
   {
       this.submitted = true;
       this.loading=true;
-      this.discountServise.update(this.discount).subscribe(
+      this.editDiscountForm.value.enabled = this.editDiscountForm.value.enabled ? 1: 0;
+      this.discountServise.update(this.editDiscountForm.value).subscribe(
         (result) =>{
           if(result.result.status == '200')
           {
             this.loading=false;
             this.router.navigate(['/dashboard/discounts']);
           }
-          else if(result.result.status === 422 && typeof result.result.errors != "undefined") 
+          else if(typeof result.result.errors != "undefined") 
           {
             let validationErrors = mainFunctions.getError(result.result.errors);
             Object.keys(validationErrors).forEach(prop => {
               const formControl = this.editDiscountForm.get(prop);
               if (formControl) {
-                // activate the error message
                 formControl.setErrors({
                   serverError: validationErrors[prop as any]
                 });
@@ -86,6 +95,7 @@ export class EditDiscountComponent implements OnInit {
             });
             this.loading=false;
           }
+          this.loading=false;
         }
       );
   }

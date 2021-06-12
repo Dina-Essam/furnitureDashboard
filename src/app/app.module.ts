@@ -25,6 +25,8 @@ import { AllCustomersComponent } from './components/customers/all-customers/all-
 import { GetCustomerByIdComponent } from './components/customers/get-customer-by-id/get-customer-by-id.component';
 import { AllDiscountsComponent } from './components/discounts/all-discounts/all-discounts.component';
 import { EditDiscountComponent } from './components/discounts/edit-discount/edit-discount.component';
+import { AllTaxesComponent } from './components/taxes/all-taxes/all-taxes.component';
+import { EditTaxComponent } from './components/taxes/edit-tax/edit-tax.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { EditDiscountComponent } from './components/discounts/edit-discount/edit
     AllCustomersComponent,
     GetCustomerByIdComponent,
     AllDiscountsComponent,
-    EditDiscountComponent
+    EditDiscountComponent,
+    AllTaxesComponent,
+    EditTaxComponent
   ],
   imports: [
     BrowserModule,

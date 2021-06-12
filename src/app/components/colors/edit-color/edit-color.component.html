@@ -42,7 +42,7 @@
                                             <h5>Edit Color</h5>
                                         </div>
                                         <div class="card-block">
-                                            <form class="form-material" [formGroup ="createColorForm" (ngSubmit)="EditColor()" >
+                                            <form class="form-material" [formGroup] ="createColorForm" (ngSubmit)="EditColor()" >
                                                 <div class="form-group form-default pb-2">
                                                     <input type="text" name="colorNmAr" class="form-control"
                                                         value="{{color.colorNmAr}}" formControlName="colorNmAr"
@@ -81,6 +81,9 @@
                                                         <label class="float-label">Color Code</label>
                                                         <div *ngIf="submitted && f.colorCode.errors" class="invalid-feedback">
                                                             <div *ngIf="f.colorCode.errors!.required">Color Code is required</div>
+                                                        </div>
+                                                        <div *ngIf="submitted && f.colorCode.errors" class="invalid-feedback">
+                                                            <div *ngIf="f.colorCode.errors!.maxLength">Color Code is must be 7 characters</div>
                                                         </div>
                                                         <div *ngIf="f.colorCode.errors?.serverError" class="invalid-feedback">
                                                             {{ f.colorCode.errors?.serverError }}

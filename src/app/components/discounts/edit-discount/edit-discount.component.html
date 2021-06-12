@@ -53,10 +53,26 @@
                                                     <div *ngIf="submitted && f.discountRate.errors" class="invalid-feedback">
                                                         <div *ngIf="f.discountRate.errors!.required">Discount Rate is required</div>
                                                     </div>
+                                                    <div *ngIf="submitted && f.discountRate.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.discountRate.errors!.pattern">Discount Rate must be numeric</div>
+                                                    </div>
                                                     <div *ngIf="f.discountRate.errors?.serverError" class="invalid-feedback">
                                                         {{ f.discountRate.errors?.serverError }}
                                                     </div>
                                                 </div>
+
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="text" name="discountMaxValue" class="form-control"
+                                                        value="{{discount.discountMaxValue}}" formControlName="discountMaxValue"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.discountMaxValue.errors }" 
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">Discount Max Rate</label>
+                                                    <div *ngIf="f.discountMaxValue.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.discountMaxValue.errors?.serverError }}
+                                                    </div>
+                                                </div>
+
                                                 <div class="form-group form-default pb-2">
                                                     <input type="date" name="startDate" class="form-control" 
                                                     value="{{discount.startDate}}" formControlName="startDate"
@@ -92,7 +108,7 @@
                                                         <input class="custom-control-input" type="checkbox" name="enabled" id="enabled"
                                                         value="{{discount.enabled}}" formControlName="enabled"
                                                         [ngClass]="{ 'is-invalid': submitted && f.enabled.errors }"
-                                                        (change)="discount.enabled = discount.enabled ? 1: 0">
+                                                        (change)="this.editDiscountForm.value.enabled = this.editDiscountForm.value.enabled ? 1: 0">
                                                         <label class="custom-control-label base-color" for="enabled">Enabled</label>
                                                     </div>
                                                 </div>
