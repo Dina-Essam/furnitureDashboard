@@ -64,6 +64,7 @@ export class SignInComponent implements OnInit {
         }
       );
     }
+    this.loading=false;
   }
 
 }

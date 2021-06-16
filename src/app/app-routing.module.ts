@@ -15,6 +15,15 @@ import { GetCustomerByIdComponent } from './components/customers/get-customer-by
 import { AllDiscountsComponent } from './components/discounts/all-discounts/all-discounts.component';
 import { EditDiscountComponent } from './components/discounts/edit-discount/edit-discount.component';
 import { AllTaxesComponent } from './components/taxes/all-taxes/all-taxes.component';
+import { AllStylesComponent } from './components/styles/all-styles/all-styles.component';
+import { CreateStyleComponent } from './components/styles/create-style/create-style.component';
+import { EditStyleComponent } from './components/styles/edit-style/edit-style.component';
+import { AllMaterialsComponent } from './components/materials/all-materials/all-materials.component';
+import { CreateMaterialComponent } from './components/materials/create-material/create-material.component';
+import { EditMaterialComponent } from './components/materials/edit-material/edit-material.component';
+import { AllFinishesComponent } from './components/finishes/all-finishes/all-finishes.component';
+import { CreateFinishComponent } from './components/finishes/create-finish/create-finish.component';
+import { EditFinishComponent } from './components/finishes/edit-finish/edit-finish.component';
 
 const routes =[
   {
@@ -30,7 +39,11 @@ const routes =[
     component: DashboardComponent,
     canActivate: [AuthGuard],
     children:[
-
+      {
+        path: '',
+        component: AllColorsComponent,
+        canActivate: [AuthGuard],
+      },
       {
         path: 'colors',
         component: AllColorsComponent,
@@ -74,6 +87,51 @@ const routes =[
       {
         path: 'taxes/update-tax/:id',
         component: EditDiscountComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'styles',
+        component: AllStylesComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'styles/create-style',
+        component: CreateStyleComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'styles/update-style/:id',
+        component: EditStyleComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'materials',
+        component: AllMaterialsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'materials/create-material',
+        component: CreateMaterialComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'materials/update-material/:id',
+        component: EditMaterialComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'finishes',
+        component: AllFinishesComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'finishes/create-finish',
+        component: CreateFinishComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'finishes/update-finish/:id',
+        component: EditFinishComponent,
         canActivate: [AuthGuard],
       },
 

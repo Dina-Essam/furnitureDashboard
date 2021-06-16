@@ -26,6 +26,7 @@ export class NavbarComponent implements OnInit {
     let value = event.target.value;
     var y: number = +value;
     mainFunctions.currentLange=y;
+    window.location.reload()
   }
 
 }

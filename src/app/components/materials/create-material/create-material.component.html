@@ -6,7 +6,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-8">
                             <div class="page-header-title">
-                                <h5 class="m-b-10">Add Color</h5>
+                                <h5 class="m-b-10">Add Material</h5>
                                 <p class="m-b-0">Welcome to La Maderas</p>
                             </div>
                         </div>
@@ -16,10 +16,10 @@
                                     <a [routerLink]="['/dashboard']"> <i class="fa fa-home"></i> </a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a [routerLink]="['/dashboard/colors']">Colors</a>
+                                    <a [routerLink]="['/dashboard/materials']">Materials</a>
                                 </li>
                                 <li class="breadcrumb-item">
-                                    <a>Add Color</a>
+                                    <a>Add Material</a>
                                 </li>
                             </ul>
                         </div>
@@ -39,39 +39,39 @@
                                   <div class="col">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5>Create Color</h5>
+                                            <h5>Create Material</h5>
                                         </div>
                                         <div class="card-block">
-                                            <form class="form-material" #createColorForm="ngForm" (ngSubmit)="CreateColor()" >
+                                            <form class="form-material" [formGroup] ="createMaterialForm" (ngSubmit)="CreateMaterial()" >
                                                 <div class="form-group form-default pb-2">
-                                                    <input type="text" name="colorNmAr" class="form-control" required
-                                                        [(ngModel)]="color.colorNmAr"
+                                                    <input type="text" name="materialNmAr" class="form-control" required
+                                                        formControlName="materialNmAr"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.materialNmAr.errors }"
                                                     >
                                                     <span class="form-bar"></span>
-                                                    <label class="float-label">Color Name in Arabic</label>
+                                                    <label class="float-label">Material Name in Arabic</label>
+                                                    <div *ngIf="submitted && f.materialNmAr.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.materialNmAr.errors!.required">Material Name in Arabic is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.materialNmAr.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.materialNmAr.errors?.serverError }}
+                                                    </div>
                                                 </div>
                                                 <div class="form-group form-default pb-2">
-                                                    <input type="text" name="colorNmEn" class="form-control" required 
-                                                    [(ngModel)]="color.colorNmEn"
+                                                    <input type="text" name="materialNmEn" class="form-control" required 
+                                                    formControlName="materialNmEn"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.materialNmEn.errors }"
                                                     >
                                                     <span class="form-bar"></span>
-                                                    <label class="float-label">Color Name in English</label>
-                                                </div>
-                                                <div class="form-group form-default pb-2">
-                                                    <div>
-                                                        <input type="text" name="colorCode" class="form-control" required maxlength="7"
-                                                        [(ngModel)]="color.colorCode"
-                                                        >
-                                                        <span class="form-bar"></span>
-                                                        <label class="float-label">Color Code</label>
+                                                    <label class="float-label">Material Name in English</label>
+                                                    <div *ngIf="submitted && f.materialNmEn.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.materialNmEn.errors!.required">Material Name in Arabic is required</div>
                                                     </div>
-                                                    <div class="col-sm-2 mobile-inputs">
-                                                        <input type="color" name="colorCode" class="form-control form-control-color" value="#824137" required
-                                                        [(ngModel)]="color.colorCode"
-                                                        >
+                                                    <div *ngIf="f.materialNmEn.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.materialNmEn.errors?.serverError }}
                                                     </div>
                                                 </div>
-                                                <button type="submit" [disabled]="!createColorForm.form.valid" class="btn btn-primary base-bg border-base btn-md waves-effect waves-light text-center float-right mr-5">Create</button>
+                                                <button type="submit" class="btn btn-primary base-bg border-base btn-md waves-effect waves-light text-center float-right mr-5">Create</button>
                                             </form>
                                             <app-spinner [loading]="loading"></app-spinner>
                                         </div>

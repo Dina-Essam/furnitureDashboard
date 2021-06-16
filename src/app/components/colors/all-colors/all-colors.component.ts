@@ -9,16 +9,19 @@ import { ColorService } from 'src/app/services/color.service';
 })
 export class AllColorsComponent implements OnInit {
   colors: any;
+  loading:boolean=false;
 
   constructor(private colorServise:ColorService, private router:Router) {}
 
   ngOnInit(): void {
+    this.loading=true;
     this.colorServise.getColors().subscribe(
       (result) =>{
         if(result.result.status == '200')
           this.colors = result.data.colorList;
       }
     );
+    this.loading=false;
   }
 
   updateColor(color:any)

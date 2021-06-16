@@ -5,7 +5,7 @@
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="page-header-title">
-                        <h5 class="m-b-10">Colors</h5>
+                        <h5 class="m-b-10">Finishes</h5>
                         <p class="m-b-0">Welcome to La Maderas</p>
                     </div>
                 </div>
@@ -14,7 +14,7 @@
                         <li class="breadcrumb-item">
                             <a [routerLink]="['/dashboard']"> <i class="fa fa-home"></i> </a>
                         </li>
-                        <li class="breadcrumb-item"><a>Colors</a>
+                        <li class="breadcrumb-item"><a>Finishes</a>
                         </li>
                     </ul>
                 </div>
@@ -30,7 +30,7 @@
                     <div class="page-body">
                         <div class="row">
                             <div class="col mb-3">
-                            <button class="btn waves-effect waves-light btn-outline-success float-right" [routerLink]="['create-color']" ><i class="ti-plus"></i>Add Color</button>
+                            <button class="btn waves-effect waves-light btn-outline-success float-right" [routerLink]="['create-finish']" ><i class="ti-plus"></i>Add Style</button>
                             </div>
                         </div>
                         <div class="row">
@@ -38,7 +38,7 @@
                             <!-- Hover table card start -->
                             <div class="col card">
                             <div class="card-header">
-                                <h5>Colors Table</h5>
+                                <h5>Finishes Table</h5>
                                 <div class="card-header-right">
                                     <ul class="list-unstyled card-option">
                                         <li><i class="fa fa fa-wrench open-card-option"></i></li>
@@ -54,21 +54,19 @@
                                         <thead>
                                             <tr>
                                                 <th>Number</th>
-                                                <th>Name in Arabic</th>
-                                                <th>Name in English</th>
-                                                <th>Color Code</th>
+                                                <th>Finish in Arabic</th>
+                                                <th>Finish in English</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let color of colors">
-                                                <th scope="row">{{color.colorNo}}</th>
-                                                <td>{{color.colorNmAr}}</td>
-                                                <td>{{color.colorNmEn}}</td>
-                                                <td><div class='p-1' [ngStyle]="{'background-color': color.colorCode}"></div>{{color.colorCode}}</td>
+                                            <tr *ngFor="let finish of finishes">
+                                                <th scope="row">{{finish.finishNo}}</th>
+                                                <td>{{finish.finishNmAr}}</td>
+                                                <td>{{finish.finishNmEn}}</td>
                                                 <td>
-                                                    <a [routerLink]="" (click)="updateColor(color)"><i class="ti-pencil base-color"></i><b class="base-color">Edit</b></a><br>
-                                                    <a [routerLink]="" (click)="deleteColor(color)"><i class="ti-trash base-color"></i><b class="base-color">Delete</b></a>
+                                                    <a [routerLink]="" (click)="updateFinish(finish)"><i class="ti-pencil base-color"></i><b class="base-color">Edit</b></a><br>
+                                                    <a [routerLink]="" (click)="deleteFinish(finish)"><i class="ti-trash base-color"></i><b class="base-color">Delete</b></a>
                                                 </td>
                                             </tr>
                                         </tbody>

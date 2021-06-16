@@ -27,6 +27,18 @@ import { AllDiscountsComponent } from './components/discounts/all-discounts/all-
 import { EditDiscountComponent } from './components/discounts/edit-discount/edit-discount.component';
 import { AllTaxesComponent } from './components/taxes/all-taxes/all-taxes.component';
 import { EditTaxComponent } from './components/taxes/edit-tax/edit-tax.component';
+import { AllStylesComponent } from './components/styles/all-styles/all-styles.component';
+import { CreateStyleComponent } from './components/styles/create-style/create-style.component';
+import { EditStyleComponent } from './components/styles/edit-style/edit-style.component';
+import { AllMaterialsComponent } from './components/materials/all-materials/all-materials.component';
+import { EditMaterialComponent } from './components/materials/edit-material/edit-material.component';
+import { CreateMaterialComponent } from './components/materials/create-material/create-material.component';
+import { CreateFinishComponent } from './components/finishes/create-finish/create-finish.component';
+import { EditFinishComponent } from './components/finishes/edit-finish/edit-finish.component';
+import { AllFinishesComponent } from './components/finishes/all-finishes/all-finishes.component';
+import { AllCitiesComponent } from './components/cities/all-cities/all-cities.component';
+import { EditCityComponent } from './components/cities/edit-city/edit-city.component';
+import { CreateCityComponent } from './components/cities/create-city/create-city.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +60,19 @@ import { EditTaxComponent } from './components/taxes/edit-tax/edit-tax.component
     AllDiscountsComponent,
     EditDiscountComponent,
     AllTaxesComponent,
-    EditTaxComponent
+    EditTaxComponent,
+    AllStylesComponent,
+    CreateStyleComponent,
+    EditStyleComponent,
+    AllMaterialsComponent,
+    EditMaterialComponent,
+    CreateMaterialComponent,
+    CreateFinishComponent,
+    EditFinishComponent,
+    AllFinishesComponent,
+    AllCitiesComponent,
+    EditCityComponent,
+    CreateCityComponent
   ],
   imports: [
     BrowserModule,
