@@ -14,31 +14,49 @@ export class EditStyleComponent implements OnInit {
   editStyleForm!: FormGroup;
   submitted = false;
   loading:boolean=false;
+  style:{ styleNo:number,styleNmEn: string ,styleNmAr: string};
 
-  constructor(private styleServise:StyleService ,private activatedroute: ActivatedRoute ,private router:Router,private formBuilder: FormBuilder) { }
+
+  patchValues() {
+    this.editStyleForm.patchValue({
+      styleNo :this.style!.styleNo,
+      styleNmEn: this.style!.styleNmEn,
+      styleNmAr: this.style!.styleNmAr,
+    })
+  }
+
+  constructor(private styleServise:StyleService ,private activatedroute: ActivatedRoute ,private router:Router,private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
+    this.loading=true;
 
     const styleid = this.activatedroute.snapshot.paramMap.get('id');
-    let style:{ styleNo:number,styleNmEn: string ,styleNmAr: string};
     this.styleServise.getByCode({styleNo:styleid}).subscribe(
       (result) =>{
         if(result.result.status == '200')
         {
-          style = result.result.data;
+          this.style = result.data.style;
+          this.patchValues();
+          this.loading=false;
+
         }
         else
+        {
+          this.loading=false;
           this.router.navigate(['/dashboard/styles']);
-
+        }
+      },
+      error => {
+        this.loading=false;
       });
 
     this.editStyleForm = this.formBuilder.group({
-      styleNo :[style!.styleNo],
-      styleNmEn: [style!.styleNmEn, [Validators.required]],
-      styleNmAr: [style!.styleNmAr, [Validators.required]],
+      styleNo :[],
+      styleNmEn: ['',[Validators.required]],
+      styleNmAr: ['',[Validators.required]],
     });
   }
-  get f() { return this.editStyleForm.controls; }
+  get f() { return this.editStyleForm!.controls; }
 
   EditStyle()
   {
@@ -63,8 +81,11 @@ export class EditStyleComponent implements OnInit {
                 });
               }
             });
-            this.loading=false;
           }
+          this.loading=false;
+        },
+        error =>{
+          this.loading=false;
         }
       );
   }

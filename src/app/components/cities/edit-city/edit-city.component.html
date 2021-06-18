@@ -1,1 +1,110 @@
-<p>edit-city works!</p>
+
+        <div class="pcoded-content">
+            <!-- Page-header start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Edit City</h5>
+                                <p class="m-b-0">Welcome to La Maderas</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <ul class="breadcrumb-title">
+                                <li class="breadcrumb-item">
+                                    <a [routerLink]="['/dashboard']"> <i class="fa fa-home"></i> </a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a [routerLink]="['/dashboard/cities']">Cities</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a>Edit City</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page-header end -->
+              <div class="pcoded-inner-content">
+                  <!-- Main-body start -->
+                  <div class="main-body">
+                      <div class="page-wrapper">
+                          <!-- Page-body start -->
+                          <div class="page-body">
+                              <div class="row">
+                                  <!-- task, page, download counter  start -->
+                                  <!-- Hover table card start -->
+                                  <div class="col">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Edit City</h5>
+                                        </div>
+                                        <div class="card-block">
+                                            <form class="form-material" [formGroup] ="editCityForm" (ngSubmit)="EditCity()" >
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="text" name="cityNmAr" class="form-control" required
+                                                        formControlName="cityNmAr"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.cityNmAr.errors }"
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">City Name in Arabic</label>
+                                                    <div *ngIf="submitted && f.cityNmAr.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.cityNmAr.errors!.required">City Name in Arabic is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.cityNmAr.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.cityNmAr.errors?.serverError }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="text" name="cityNmEn" class="form-control" required 
+                                                    formControlName="cityNmEn"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.cityNmEn.errors }"
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">City Name in English</label>
+                                                    <div *ngIf="submitted && f.cityNmEn.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.cityNmEn.errors!.required">City Name in Arabic is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.cityNmEn.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.cityNmEn.errors?.serverError }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="text" name="shipPrice" class="form-control" required 
+                                                    formControlName="shipPrice"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.shipPrice.errors }" 
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">Ship Price</label>
+                                                    <div *ngIf="submitted && f.shipPrice.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.shipPrice.errors!.required">Ship Price is required</div>
+                                                    </div>
+                                                    <div *ngIf="submitted && f.shipPrice.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.shipPrice.errors!.pattern">Ship Price must be numeric</div>
+                                                    </div>
+                                                    <div *ngIf="f.shipPrice.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.shipPrice.errors?.serverError }}
+                                                    </div>
+                                                </div>
+
+
+                                                <button type="submit" class="btn btn-primary base-bg border-base btn-md waves-effect waves-light text-center float-right mr-5">Edit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                  <!-- Hover table card end -->
+                                  <!--  project and team member end -->
+                              </div>
+                              <app-spinner [loading]="loading"></app-spinner>
+                          </div>
+                          <!-- Page-body end -->
+                      </div>
+                      <div id="styleSelector"> </div>
+                  </div>
+              </div>
+        </div>
+    

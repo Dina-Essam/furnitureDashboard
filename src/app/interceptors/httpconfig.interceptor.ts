@@ -7,7 +7,6 @@ import {
     HttpEvent,
     HttpErrorResponse
 } from '@angular/common/http';
-
 import { Observable, throwError } from 'rxjs';
 import { catchError, map ,tap} from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
@@ -23,6 +22,18 @@ export class HttpConfigInterceptor implements HttpInterceptor {
     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+        if (!window.navigator.onLine)
+        {
+            let data = {
+                reason: "Internet is required",
+                status: 502
+            };
+            this.errorDialogService.openDialog(data);
+            return throwError(new HttpErrorResponse({ error: 'Internet is required.' }));
+        }
+            
+
         const authService = this.injector.get(AuthService);
         const token = authService.getToken();
 

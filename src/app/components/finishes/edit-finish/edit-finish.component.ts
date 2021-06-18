@@ -17,25 +17,42 @@ export class EditFinishComponent implements OnInit {
 
   constructor(private finishServise:FinishService ,private activatedroute: ActivatedRoute ,private router:Router,private formBuilder: FormBuilder) { }
 
+  patchValues(finish) {
+    this.editFinishForm.patchValue({
+      finishNo :finish!.finishNo,
+      finishNmEn: finish!.finishNmEn,
+      finishNmAr: finish!.finishNmAr,
+    })
+  }
 
   ngOnInit(): void {
+    this.loading=true;
+
     const finishid = this.activatedroute.snapshot.paramMap.get('id');
     let finish:{ finishNo:number,finishNmAr: string ,finishNmEn: string};
     this.finishServise.getByCode({finishNo:finishid}).subscribe(
       (result) =>{
         if(result.result.status == '200')
         {
-          finish = result.result.data;
+          finish = result.data.finish;
+          this.patchValues(finish) ;
+          this.loading=false;
         }
         else
+        {
+          this.loading=false;
           this.router.navigate(['/dashboard/finishes']);
-
-      });
+        }
+      },
+      error => {
+        this.loading=false;
+      } 
+      );
 
     this.editFinishForm = this.formBuilder.group({
-      finishNo :[finish!.finishNo],
-      finishNmEn: [finish!.finishNmEn, [Validators.required]],
-      finishNmAr: [finish!.finishNmAr, [Validators.required]],
+      finishNo :[],
+      finishNmEn: ['', [Validators.required]],
+      finishNmAr: ['', [Validators.required]],
     });
   }
 
@@ -64,8 +81,11 @@ export class EditFinishComponent implements OnInit {
                 });
               }
             });
-            this.loading=false;
           }
+          this.loading=false;
+        },
+        error =>{
+          this.loading=false;
         }
       );
   }

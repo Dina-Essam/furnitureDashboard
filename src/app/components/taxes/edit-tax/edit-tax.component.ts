@@ -82,8 +82,10 @@ loading:boolean=false;
                 });
               }
             });
-            this.loading=false;
           }
+          this.loading=false;
+        },
+        error =>{
           this.loading=false;
         }
       );

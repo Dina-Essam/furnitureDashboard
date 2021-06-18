@@ -25,25 +25,24 @@ export class CityService {
   }
 
   create(CityData: any): Observable<any> {
-    let request = mainFunctions.requestData('City' , CityData);
-
+    let request = mainFunctions.requestData('city' , CityData);
     return this.http.post(this._createCityUrl,request);
   }
 
   update(CityData: any): Observable<any> {
-    let request = mainFunctions.requestData('City' , CityData);
+    let request = mainFunctions.requestData('city' , CityData);
 
     return this.http.post(this._updateCityUrl, request);
   }
 
   delete(CityData: any): Observable<any> {
-    let request = mainFunctions.requestData('City' , CityData);
+    let request = mainFunctions.requestData('city' , CityData);
 
     return this.http.post(this._deleteCityUrl, request);
   }
 
   getByCode(CityData: any): Observable<any> {
-    let request = mainFunctions.requestData('City' , CityData);
+    let request = mainFunctions.requestData('city' , CityData);
 
     return this.http.post(this._getCityByCodeUrl, request);
   }

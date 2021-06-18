@@ -49,11 +49,13 @@ export class CreateMaterialComponent implements OnInit {
                 });
               }
             });
-            this.loading=false;
           }
+          this.loading=false;
+        },
+        error =>{
+          this.loading=false;
         }
       );
-      this.loading=false;
   }
 
 

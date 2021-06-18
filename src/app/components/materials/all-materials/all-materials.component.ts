@@ -21,9 +21,13 @@ export class AllMaterialsComponent implements OnInit {
       (result) =>{
         if(result.result.status == '200')
           this.materials = result.data.materialList;
+        this.loading = false;
+      },
+      error=>
+      {    
+        this.loading = false;
       }
     );
-    this.loading = false;
   }
 
 
@@ -39,10 +43,14 @@ export class AllMaterialsComponent implements OnInit {
     this.materialServise.delete(material).subscribe(
       (result) =>{
         if(result.result.status == '200')
-        window.location.reload();
+          window.location.reload();
+        this.loading = false;
+      },
+      error=>
+      {    
+        this.loading = false;
       }
     );
-    this.loading = false;
 
   }
 

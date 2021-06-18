@@ -93,8 +93,10 @@ export class EditDiscountComponent implements OnInit {
                 });
               }
             });
-            this.loading=false;
           }
+          this.loading=false;
+        },
+        error =>{
           this.loading=false;
         }
       );

@@ -21,9 +21,13 @@ export class AllFinishesComponent implements OnInit {
       (result) =>{
         if(result.result.status == '200')
           this.finishes = result.data.finishList;
-      }
+          this.loading = false;
+        },
+        error=>
+        {    
+          this.loading = false;
+        }
     );
-    this.loading = false;
   }
 
   updateFinish(finish:any)
@@ -39,10 +43,13 @@ export class AllFinishesComponent implements OnInit {
       (result) =>{
         if(result.result.status == '200')
         window.location.reload();
+        this.loading = false;
+      },
+      error=>
+      {    
+        this.loading = false;
       }
     );
-    this.loading = false;
-
   }
 
 }

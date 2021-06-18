@@ -24,6 +24,9 @@ import { EditMaterialComponent } from './components/materials/edit-material/edit
 import { AllFinishesComponent } from './components/finishes/all-finishes/all-finishes.component';
 import { CreateFinishComponent } from './components/finishes/create-finish/create-finish.component';
 import { EditFinishComponent } from './components/finishes/edit-finish/edit-finish.component';
+import { AllCitiesComponent } from './components/cities/all-cities/all-cities.component';
+import { CreateCityComponent } from './components/cities/create-city/create-city.component';
+import { EditCityComponent } from './components/cities/edit-city/edit-city.component';
 
 const routes =[
   {
@@ -134,6 +137,22 @@ const routes =[
         component: EditFinishComponent,
         canActivate: [AuthGuard],
       },
+      {
+        path: 'cities',
+        component: AllCitiesComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'cities/create-city',
+        component: CreateCityComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'cities/update-city/:id',
+        component: EditCityComponent,
+        canActivate: [AuthGuard],
+      },
+
 
     ]
   },

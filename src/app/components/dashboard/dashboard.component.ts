@@ -10,6 +10,12 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if (!localStorage.getItem('Reload')) { 
+      localStorage.setItem('Reload', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('Reload') 
+    }
   }
 
 }

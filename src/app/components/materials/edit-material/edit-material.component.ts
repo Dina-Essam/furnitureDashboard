@@ -1,4 +1,3 @@
-import { style } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,26 +16,44 @@ export class EditMaterialComponent implements OnInit {
   loading:boolean=false;
 
   constructor(private materialServise:MaterialService ,private activatedroute: ActivatedRoute ,private router:Router,private formBuilder: FormBuilder) { }
+ 
+  patchValues(material) {
+    this.editMaterialForm.patchValue({
+      materialNo :material!.materialNo,
+      materialNmEn: material!.materialNmEn,
+      materialNmAr: material!.materialNmAr
+    })
+  }
 
 
   ngOnInit(): void {
+    this.loading=true;
     const materialid = this.activatedroute.snapshot.paramMap.get('id');
     let material:{ materialNo:number,materialNmAr: string ,materialNmEn: string};
     this.materialServise.getByCode({materialNo:materialid}).subscribe(
       (result) =>{
         if(result.result.status == '200')
         {
-          material = result.result.data;
+          material = result.data.material;
+          this.patchValues(material);
+          this.loading=false;
+
         }
         else
+        {
+          this.loading=false;
           this.router.navigate(['/dashboard/materials']);
+        }
 
+      },
+      error => {
+        this.loading=false;
       });
 
     this.editMaterialForm = this.formBuilder.group({
-      materialNo :[material!.materialNo],
-      materialNmEn: [material!.materialNmEn, [Validators.required]],
-      materialNmAr: [material!.materialNmAr, [Validators.required]],
+      materialNo :[],
+      materialNmEn: ['', [Validators.required]],
+      materialNmAr: ['', [Validators.required]],
     });
   }
 
@@ -65,8 +82,11 @@ export class EditMaterialComponent implements OnInit {
                 });
               }
             });
-            this.loading=false;
           }
+          this.loading=false;
+        },
+        error =>{
+          this.loading=false;
         }
       );
   }

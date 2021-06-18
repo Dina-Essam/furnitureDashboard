@@ -21,9 +21,13 @@ export class AllStylesComponent implements OnInit {
       (result) =>{
         if(result.result.status == '200')
           this.styles = result.data.styleList;
-      }
+          this.loading = false;
+        },
+        error=>
+        {    
+          this.loading = false;
+        }
     );
-    this.loading = false;
   }
 
   updateStyle(style:any)
@@ -33,10 +37,16 @@ export class AllStylesComponent implements OnInit {
 
   deleteStyle(style:any)
   {
+    this.loading=true;
     this.styleServise.delete(style).subscribe(
       (result) =>{
         if(result.result.status == '200')
         window.location.reload();
+        this.loading = false;
+      },
+      error=>
+      {    
+        this.loading = false;
       }
     );
   }

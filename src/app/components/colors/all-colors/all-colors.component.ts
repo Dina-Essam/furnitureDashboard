@@ -19,9 +19,13 @@ export class AllColorsComponent implements OnInit {
       (result) =>{
         if(result.result.status == '200')
           this.colors = result.data.colorList;
-      }
+          this.loading = false;
+        },
+        error=>
+        {    
+          this.loading = false;
+        }
     );
-    this.loading=false;
   }
 
   updateColor(color:any)
@@ -38,10 +42,16 @@ export class AllColorsComponent implements OnInit {
   }
   deleteColor(color:any)
   {
+    this.loading=true;
     this.colorServise.delete(color).subscribe(
       (result) =>{
         if(result.result.status == '200')
         window.location.reload();
+        this.loading = false;
+      },
+      error=>
+      {    
+        this.loading = false;
       }
     );
   }

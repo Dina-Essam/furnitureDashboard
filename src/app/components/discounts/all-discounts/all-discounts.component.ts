@@ -10,16 +10,24 @@ import { DiscountService } from 'src/app/services/discount.service';
 export class AllDiscountsComponent implements OnInit {
   
   discounts: any;
+  loading:boolean=false;
+
 
   constructor(private discountServise:DiscountService, private router:Router) { }
 
   ngOnInit(): void {
 
+    this.loading=true;
     this.discountServise.getDiscount().subscribe(
       (result) =>{
         if(result.result.status == '200')
           this.discounts = [result.data.discount];
-      }
+          this.loading = false;
+        },
+        error=>
+        {    
+          this.loading = false;
+        }
     );
 
   }

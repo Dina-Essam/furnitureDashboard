@@ -10,16 +10,24 @@ import { TaxesService } from 'src/app/services/taxes.service';
 export class AllTaxesComponent implements OnInit {
 
   taxes:any;
+  loading:boolean=false;
+
 
   constructor(private taxesService:TaxesService, private router:Router) { }
 
   ngOnInit(): void {
-
+    
+    this.loading=true;
     this.taxesService.getTaxes().subscribe(
       (result) =>{
         if(result.result.status == '200')
           this.taxes = [result.data.taxes];
-      }
+          this.loading = false;
+        },
+        error=>
+        {    
+          this.loading = false;
+        }
     );
 
   }

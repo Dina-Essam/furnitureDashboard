@@ -1,4 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { test1 } from '../assets/js/script';
+import { DynamicScriptLoaderService } from './services/dynamic-script-loader.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,17 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class AppComponent {
   title = 'dashboard';
+
+
+  constructor(private dynamicScriptLoader: DynamicScriptLoaderService) {}
+
+  ngOnInit() {
+    this.loadScripts();
+  }
+  
+  private loadScripts() {
+    this.dynamicScriptLoader.load().then(data => {
+    }).catch(error => console.log(error));
+  }
+
 }

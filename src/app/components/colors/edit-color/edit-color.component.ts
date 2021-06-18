@@ -33,12 +33,12 @@ export class EditColorComponent implements OnInit {
   ngOnInit(): void {
 
     this.createColorForm = this.formBuilder.group({
-      colorNo:[this.color.colorNo],
+      colorNo:[],
       colorNmEn: ['', [Validators.required]],
       colorNmAr: ['', [Validators.required]],
       colorCode: ['', [Validators.required, Validators.maxLength(6)]]
     });
-    this.createColorForm.setValue(this.color);
+    this.createColorForm.patchValue(this.color);
   }
   get f() { return this.createColorForm.controls; }
 
@@ -65,10 +65,19 @@ export class EditColorComponent implements OnInit {
                 });
               }
             });
-            this.loading=false;
           }
+          this.loading=false;
+        },
+        error =>{
+          this.loading=false;
         }
       );
+  }
+
+  addText(event) {
+    this.createColorForm.patchValue({
+      colorCode: event.target.value
+    });
   }
 
 }
