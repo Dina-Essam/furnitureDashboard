@@ -344,8 +344,8 @@
         .page-header .page-block .breadcrumb-title .breadcrumb-item + .breadcrumb-item::before {
           content: "\f105";
           font-family: FontAwesome;
-          padding-right: 5px;
-          padding-top: 5px;
+          /* padding-right: 5px; */
+          /* padding-top: 5px; */
           font-size: 12px;
           color: #fff; }
     @media only screen and (max-width: 768px) {

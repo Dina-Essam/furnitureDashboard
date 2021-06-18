@@ -39,6 +39,12 @@ import { AllFinishesComponent } from './components/finishes/all-finishes/all-fin
 import { AllCitiesComponent } from './components/cities/all-cities/all-cities.component';
 import { EditCityComponent } from './components/cities/edit-city/edit-city.component';
 import { CreateCityComponent } from './components/cities/create-city/create-city.component';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { AllAboutsComponent } from './components/abouts/all-abouts/all-abouts.component';
+import { AllActiveAboutsComponent } from './components/abouts/all-active-abouts/all-active-abouts.component';
+import { AllCategoriesComponent } from './components/categories/all-categories/all-categories.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +78,10 @@ import { CreateCityComponent } from './components/cities/create-city/create-city
     AllFinishesComponent,
     AllCitiesComponent,
     EditCityComponent,
-    CreateCityComponent
+    CreateCityComponent,
+    AllAboutsComponent,
+    AllActiveAboutsComponent,
+    AllCategoriesComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +91,8 @@ import { CreateCityComponent } from './components/cities/create-city/create-city
     MatDialogModule,
     BrowserAnimationsModule,
     NgbPaginationModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
@@ -91,4 +101,8 @@ import { CreateCityComponent } from './components/cities/create-city/create-city
   entryComponents: [ErrorDialogComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, far);
+  }
+ }

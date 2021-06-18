@@ -9,11 +9,11 @@ import { mainFunctions } from 'src/main';
 })
 export class FinishService {
 
-  _allFinishesUrl = environment.apiUrl+`/lamaderas/v1/PROD/Finish/getFinishList`;
-  _createFinishUrl = environment.apiUrl+`​/lamaderas​/v1​/PROD​/Finish​/addFinish`;
-  _deleteFinishUrl = environment.apiUrl+`/lamaderas/v1/PROD/Finish/deleteFinish`;
-  _updateFinishUrl = environment.apiUrl+`/lamaderas/v1/PROD/Finish/updateFinish`;
-  _getSFinishByCodeUrl = environment.apiUrl+`/lamaderas/v1/PROD/Finish/getFinishByCode`;
+  _allFinishesUrl = environment.apiUrl+'/lamaderas/v1/PROD/Finish/getFinishList';
+  _createFinishUrl = environment.apiUrl+'/lamaderas/v1/PROD/Finish/addFinish';
+  _deleteFinishUrl = environment.apiUrl+'/lamaderas/v1/PROD/Finish/deleteFinish';
+  _updateFinishUrl = environment.apiUrl+'/lamaderas/v1/PROD/Finish/updateFinish';
+  _getFinishByCodeUrl = environment.apiUrl+'/lamaderas/v1/PROD/Finish/getFinishByCode';
 
 
   constructor(private http: HttpClient) { }
@@ -45,6 +45,6 @@ export class FinishService {
   getByCode(FinishData: any): Observable<any> {
     let request = mainFunctions.requestData('finish' , FinishData);
 
-    return this.http.post(this._getSFinishByCodeUrl, request);
+    return this.http.post(this._getFinishByCodeUrl, request);
   }
 }

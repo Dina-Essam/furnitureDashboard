@@ -9,15 +9,19 @@ import { mainFunctions } from 'src/main';
 })
 export class DiscountService {
 
-  _allDiscountssUrl = environment.apiUrl+`/lamaderas/v1/FIN/Discount/getDiscountList`;
-  _updateDiscountUrl = environment.apiUrl+`/lamaderas/v1/FIN/Discount/updateDiscount`;
+  _allDiscountsUrl = environment.apiUrl+'/lamaderas/v1/FIN/Discount/getDiscountList';
+  _updateDiscountUrl = environment.apiUrl+'/lamaderas/v1/FIN/Discount/updateDiscount';
+
+  _createDiscountUrl = environment.apiUrl+'/lamaderas/v1/FIN/Discount/addDiscount';
+  _deleteDiscountUrl = environment.apiUrl+'/lamaderas/v1/FIN/Discount/deleteDiscount';
+  _getDiscountByCodeUrl = environment.apiUrl+'/lamaderas/v1/FIN/Discount/getDiscountByCode';
 
   constructor(private http: HttpClient) { }
 
   getDiscount(): Observable<any> {
     let request = mainFunctions.requestData();
 
-    return this.http.post<any>(this._allDiscountssUrl, request);
+    return this.http.post<any>(this._allDiscountsUrl, request);
   }
 
 
@@ -26,4 +30,23 @@ export class DiscountService {
 
     return this.http.post(this._updateDiscountUrl, request);
   }
+
+  create(DiscountData: any): Observable<any> {
+    let request = mainFunctions.requestData('discount' , DiscountData);
+
+    return this.http.post(this._createDiscountUrl,request);
+  }
+  delete(DiscountData: any): Observable<any> {
+    let request = mainFunctions.requestData('discount' , DiscountData);
+
+    return this.http.post(this._deleteDiscountUrl, request);
+  }
+
+  getByCode(DiscountData: any): Observable<any> {
+    let request = mainFunctions.requestData('discount' , DiscountData);
+
+    return this.http.post(this._getDiscountByCodeUrl, request);
+  }
+
+  
 }

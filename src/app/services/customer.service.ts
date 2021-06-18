@@ -10,9 +10,9 @@ import { mainFunctions } from 'src/main';
 export class CustomerService {
 
 
-  _allCustomersUrl = environment.apiUrl+`/lamaderas/v1/ADM/Customer/getAllCustomers`;
-  _getByIdCustomerUrl = environment.apiUrl+`/lamaderas/v1/ADM/Customer/getCustomerByCode`;
-  _deleteCustomerUrl = environment.apiUrl+`/lamaderas/v1/ADM/Customer/deleteCustomer`;
+  _allCustomersUrl = environment.apiUrl+'/lamaderas/v1/ADM/Customer/getAllCustomers';
+  _getByIdCustomerUrl = environment.apiUrl+'/lamaderas/v1/ADM/Customer/getCustomerByCode';
+  _deleteCustomerUrl = environment.apiUrl+'/lamaderas/v1/ADM/Customer/deleteCustomer';
 
   constructor(private http: HttpClient) { }
 

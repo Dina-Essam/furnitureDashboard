@@ -9,10 +9,10 @@ import { mainFunctions } from 'src/main';
 })
 export class ColorService {
 
-  _allColorsUrl = environment.apiUrl+`/lamaderas/v1/PROD/Color/getColorList`;
-  _createColorsUrl = environment.apiUrl+`/lamaderas/v1/PROD/Color/addColor`;
-  _deleteColorsUrl = environment.apiUrl+`/lamaderas/v1/PROD/Color/deleteColor`;
-  _updateColorsUrl = environment.apiUrl+`/lamaderas/v1/PROD/Color/updateColor`;
+  _allColorsUrl = environment.apiUrl+'/lamaderas/v1/PROD/Color/getColorList';
+  _createColorsUrl = environment.apiUrl+'/lamaderas/v1/PROD/Color/addColor';
+  _deleteColorsUrl = environment.apiUrl+'/lamaderas/v1/PROD/Color/deleteColor';
+  _updateColorsUrl = environment.apiUrl+'/lamaderas/v1/PROD/Color/updateColor';
 
 
   constructor(private http: HttpClient) { }

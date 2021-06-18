@@ -5,7 +5,7 @@
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="page-header-title">
-                        <h5 class="m-b-10">Cities</h5>
+                        <h5 class="m-b-10">Abouts</h5>
                         <p class="m-b-0">Welcome to La Maderas</p>
                     </div>
                 </div>
@@ -14,7 +14,7 @@
                         <li class="breadcrumb-item">
                             <a [routerLink]="['/dashboard']"> <i class="fa fa-home"></i> </a>
                         </li>
-                        <li class="breadcrumb-item"><a>Cities</a>
+                        <li class="breadcrumb-item"><a>Abouts</a>
                         </li>
                     </ul>
                 </div>
@@ -30,7 +30,7 @@
                     <div class="page-body">
                         <div class="row">
                             <div class="col mb-3">
-                            <button class="btn waves-effect waves-light btn-outline-success float-right" [routerLink]="['create-city']" ><i class="ti-plus"></i>Add City</button>
+                            <button class="btn waves-effect waves-light btn-outline-success float-right" [routerLink]="['create-about']" ><i class="ti-plus"></i>Add About</button>
                             </div>
                         </div>
                         <div class="row">
@@ -38,7 +38,7 @@
                             <!-- Hover table card start -->
                             <div class="col card">
                             <div class="card-header">
-                                <h5>Cities Table</h5>
+                                <h5>Abouts Table</h5>
                                 <div class="card-header-right">
                                     <ul class="list-unstyled card-option">
                                         <li><i class="fa fa fa-wrench open-card-option"></i></li>
@@ -54,24 +54,21 @@
                                         <thead>
                                             <tr>
                                                 <th>Number</th>
-                                                <th>City Name in Arabic</th>
-                                                <th>City Name in English</th>
-                                                <th>Ship Price</th>
+                                                <th>About Name in Arabic</th>
+                                                <th>About Name in English</th>
+                                                <th>Order NNumber</th>
+                                                <th>Status</th>
                                                 <th>Create On</th>
-                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let city of cities">
-                                                <th scope="row">{{city.cityNo}}</th>
-                                                <td>{{city.cityNmAr}}</td>
-                                                <td>{{city.cityNmEn}}</td>
-                                                <td>{{city.shipPrice}}</td>
-                                                <td>{{city.createOn | date:'MM/dd/yyyy h:mm a'}}</td>
-                                                <td>
-                                                    <a [routerLink]="" (click)="updateCity(city)"><i class="ti-pencil base-color"></i><b class="base-color">Edit</b></a><br>
-                                                    <a [routerLink]="" (click)="deleteCity(city)"><i class="ti-trash base-color"></i><b class="base-color">Delete</b></a>
-                                                </td>
+                                            <tr *ngFor="let about of abouts">
+                                                <th scope="row">{{about.aboutNo}}</th>
+                                                <td>{{about.aboutTxtAr}}</td>
+                                                <td>{{about.aboutTxtEn}}</td>
+                                                <td>{{about.orderNo}}</td>
+                                                <td>{{about.enabled === 1 ? 'Enabled' : 'Disabled'}}</td>
+                                                <td>{{about.createOn | date:'MM/dd/yyyy h:mm a'}}</td>
                                             </tr>
                                         </tbody>
                                     </table>

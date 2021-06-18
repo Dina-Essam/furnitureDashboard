@@ -9,11 +9,11 @@ import { mainFunctions } from 'src/main';
 })
 export class StyleService {
 
-  _allStylesUrl = environment.apiUrl+`/lamaderas/v1/PROD/Style/getStyleList`;
-  _createStyleUrl = environment.apiUrl+`/lamaderas/v1/PROD/Style/addStyle`;
-  _deleteStyleUrl = environment.apiUrl+`/lamaderas/v1/PROD/Style/deleteStyle`;
-  _updateStyleUrl = environment.apiUrl+`/lamaderas/v1/PROD/Style/updateStyle`;
-  _getStyleByCodeUrl = environment.apiUrl+`/lamaderas/v1/PROD/Style/getStyleByCode`;
+  _allStylesUrl = environment.apiUrl+'/lamaderas/v1/PROD/Style/getStyleList';
+  _createStyleUrl = environment.apiUrl+'/lamaderas/v1/PROD/Style/addStyle';
+  _deleteStyleUrl = environment.apiUrl+'/lamaderas/v1/PROD/Style/deleteStyle';
+  _updateStyleUrl = environment.apiUrl+'/lamaderas/v1/PROD/Style/updateStyle';
+  _getStyleByCodeUrl = environment.apiUrl+'/lamaderas/v1/PROD/Style/getStyleByCode';
 
 
   constructor(private http: HttpClient) { }

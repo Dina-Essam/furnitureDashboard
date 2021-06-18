@@ -31,14 +31,14 @@
         <div class="pcoded-navigation-label" data-i18n="nav.category.forms">About</div>
         <ul class="pcoded-item pcoded-left-item">
             <li>
-                <a href="form-elements-component.html" class="waves-effect waves-dark">
+                <a [routerLink]="['/dashboard/abouts']" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="ti-pencil-alt"></i><b>FC</b></span>
                     <span class="pcoded-mtext" >All Abouts</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>
             <li>
-                <a href="bs-basic-table.html" class="waves-effect waves-dark">
+                <a [routerLink]="['/dashboard/abouts-active']" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="ti-pencil-alt"></i><b>FC</b></span>
                     <span class="pcoded-mtext" >Active Abouts</span>
                     <span class="pcoded-mcaret"></span>
@@ -101,7 +101,7 @@
         <ul class="pcoded-item pcoded-left-item">
             <li>
                 <a [routerLink]="['/dashboard/styles']" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-stats-down"></i><b>FC</b></span>
+                    <span class="pcoded-micon"><fa-icon [icon]="['fas', 'hotel']"></fa-icon><b>FC</b></span>
                     <span class="pcoded-mtext">Styles</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
@@ -112,7 +112,7 @@
         <ul class="pcoded-item pcoded-left-item">
             <li>
                 <a [routerLink]="['/dashboard/materials']" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-stats-down"></i><b>FC</b></span>
+                    <span class="pcoded-micon"><fa-icon [icon]="['fas', 'door-closed']"></fa-icon><b>FC</b></span>
                     <span class="pcoded-mtext">Materials</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
@@ -122,7 +122,7 @@
         <ul class="pcoded-item pcoded-left-item">
             <li>
                 <a [routerLink]="['/dashboard/finishes']" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-stats-down"></i><b>FC</b></span>
+                    <span class="pcoded-micon"><fa-icon [icon]="['fas', 'building']"></fa-icon><b>FC</b></span>
                     <span class="pcoded-mtext">Finishes</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
@@ -132,7 +132,7 @@
         <ul class="pcoded-item pcoded-left-item">
             <li>
                 <a [routerLink]="['/dashboard/cities']" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-stats-down"></i><b>FC</b></span>
+                    <span class="pcoded-micon"><fa-icon [icon]="['fas', 'city']"></fa-icon><b>FC</b></span>
                     <span class="pcoded-mtext">Cities</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
