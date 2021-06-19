@@ -30,6 +30,7 @@ import { EditCityComponent } from './components/cities/edit-city/edit-city.compo
 import { AllAboutsComponent } from './components/abouts/all-abouts/all-abouts.component';
 import { AllActiveAboutsComponent } from './components/abouts/all-active-abouts/all-active-abouts.component';
 import { AllCategoriesComponent } from './components/categories/all-categories/all-categories.component';
+import { AllCategoryDetailsComponent } from './components/categories/all-category-details/all-category-details.component';
 
 const routes =[
   {
@@ -169,8 +170,12 @@ const routes =[
         path: 'categories',
         component: AllCategoriesComponent,
         canActivate: [AuthGuard],
+      },
+      {
+        path: 'categories/details-category/:id',
+        component: AllCategoryDetailsComponent,
+        canActivate: [AuthGuard],
       }
-
 
     ]
   },

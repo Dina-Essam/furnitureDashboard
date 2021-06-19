@@ -13,18 +13,30 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 
 export class mainFunctions
 {
-  static currentLange=1;
   constructor(){}
 
   static requestData(DataName?:string , Data?: any) {
     let request;
     if(DataName)
-      request = {data:{lngNo:mainFunctions.currentLange, [DataName]:Data}}; 
+      request = {data:{lngNo:mainFunctions.getCurrentLanguage(), [DataName]:Data}}; 
     else
-      request = {data:{lngNo:mainFunctions.currentLange}}; 
+      request = {data:{lngNo:mainFunctions.getCurrentLanguage()}}; 
 
     console.log(request);
     return request;
+  }
+
+  static getCurrentLanguage()
+  {
+    if (!localStorage.getItem('CURRENT_LANGAGE'))
+          localStorage.setItem('CURRENT_LANGAGE', '1');
+    var y: number = +localStorage.getItem('CURRENT_LANGAGE');
+    return y;
+  }
+
+  static setCurrentLanguage(value)
+  {
+    localStorage.setItem('CURRENT_LANGAGE', value);
   }
 
   static getError(error:Array<any>):{[key: string]: any}

@@ -17,4 +17,9 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
   }
+  onImgError($event)
+  {
+    $event.target.src = "assets/images/placeholder-male.jpg";
+  }
+
 }

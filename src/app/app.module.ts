@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPaginationModule , NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
+import { MatCardModule } from '@angular/material/card';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -45,6 +46,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { AllAboutsComponent } from './components/abouts/all-abouts/all-abouts.component';
 import { AllActiveAboutsComponent } from './components/abouts/all-active-abouts/all-active-abouts.component';
 import { AllCategoriesComponent } from './components/categories/all-categories/all-categories.component';
+import { AllCategoryDetailsComponent } from './components/categories/all-category-details/all-category-details.component';
 
 @NgModule({
   declarations: [
@@ -81,8 +83,9 @@ import { AllCategoriesComponent } from './components/categories/all-categories/a
     CreateCityComponent,
     AllAboutsComponent,
     AllActiveAboutsComponent,
-    AllCategoriesComponent
-  ],
+    AllCategoriesComponent,
+    AllCategoryDetailsComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -91,8 +94,10 @@ import { AllCategoriesComponent } from './components/categories/all-categories/a
     MatDialogModule,
     BrowserAnimationsModule,
     NgbPaginationModule,
+    NgbCarouselModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatCardModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },

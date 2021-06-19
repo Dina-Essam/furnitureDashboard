@@ -1,0 +1,112 @@
+<div class="pcoded-content">
+    <!-- Page-header start -->
+    <div class="page-header" >
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="page-header-title">
+                        <h5 class="m-b-10">Categories</h5>
+                        <p class="m-b-0">Welcome to La Maderas</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <ul class="breadcrumb-title">
+                        <li class="breadcrumb-item">
+                            <a [routerLink]="['/dashboard']"> <i class="fa fa-home"></i> </a>
+                        </li>
+                        <li class="breadcrumb-item"><a>Categories</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page-header end -->
+        <div class="pcoded-inner-content" >
+            <!-- Main-body start -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- Page-body start -->
+                    <div class="page-body">
+                        <div class="row">
+                            <!-- task, page, download counter  start -->
+                            <!-- Hover table card start -->
+ 
+  
+  
+                                <ngb-carousel *ngIf="category?.images.length; else elseBlock" class="col-12" #carousel [interval]="10000" [pauseOnHover]=true [pauseOnFocus]=true>
+                                    <ng-template ngbSlide *ngFor="let img of category?.images; index as i">
+                                        <div class="picsum-img-wrapper">
+                                            <img class="card-img-top" [src]="img.imgPath" alt="My image {{category?.catNameEn}} description" (error) ="onImgError($event)" loading ="lazy">
+                                        </div>
+                                    <div class="carousel-caption">
+                                        <h3>{{category?.catNameEn}}</h3>
+                                    </div>
+                                    </ng-template>
+                                </ngb-carousel>
+
+                                <ng-template #elseBlock>
+                                    <ngb-carousel class="col-12" #carousel [interval]="10000" [pauseOnHover]=true [pauseOnFocus]=true>
+                                        <ng-template ngbSlide >
+                                            <div class="picsum-img-wrapper">
+                                                <img class="card-img-top"src='...' alt="My image {{category?.catNameEn}} description" (error) ="onImgError($event)" loading ="lazy">
+                                            </div>
+                                        <div class="carousel-caption">
+                                            <h3>{{category?.catNameEn}}</h3>
+                                        </div>
+                                        </ng-template>
+                                    </ngb-carousel>
+                                </ng-template>
+
+                                <hr>
+
+                                <div class="col-sm-6  mb-2 mt-4">
+                                    <mat-card class="w-100">
+                                        <mat-card-header>
+                                            <mat-card-title>Category Name in English: {{category?.catNameEn}}</mat-card-title>
+                                        </mat-card-header>
+                                        <mat-card-content class='categoryDsc'>
+                                            <h6 class="text-secondary">Description in English</h6>
+                                        <p>
+                                            {{category?.catDscEn}}
+                                        </p>
+                                        </mat-card-content>
+                                    </mat-card>
+                                </div>
+
+                                <div class="col-sm-6  mb-2 mt-4">
+                                    <mat-card class="w-100">
+                                        <mat-card-header style="justify-content: flex-end;">
+                                            <mat-card-title class="text-right">اسم الفئة باللغة العربية : {{category?.catNameAr}}</mat-card-title>
+                                        </mat-card-header>
+                                        <mat-card-content class='categoryDsc text-right'>
+                                            <h6 class="text-secondary">وصف الفئة باللغة العربية</h6>
+                                        <p>
+                                            {{category?.catDscAr}}
+                                        </p>
+                                        </mat-card-content>
+                                    </mat-card>
+                                </div>
+
+  </div>
+  <div class="row" style="justify-content: flex-end;">
+
+    <div class="col-sm-2 mb-3">
+        <button class="btn waves-effect waves-light btn-outline-warning float-right" (click)="editCategory()"><i class="ti-pencil"></i>Edit Category</button>
+    </div>
+    <div class="col-sm-2 mb-3">
+        <button class="btn waves-effect waves-light btn-outline-danger float-right" (click)="deleteCategory()"><i class="ti-trash"></i>Delete Category</button>
+    </div>
+
+</div>
+
+</div>
+<!-- Page-body end -->
+<app-spinner [loading]="loading"></app-spinner>
+</div>
+<div id="styleSelector"> </div>
+</div>
+</div>
+</div>
+  
+  

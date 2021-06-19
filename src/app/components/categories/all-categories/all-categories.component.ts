@@ -11,7 +11,7 @@ export class AllCategoriesComponent implements OnInit {
 
   categories: any;
   loading:boolean=false;
-
+  
   constructor(private categoryServise:CategoryService, private router:Router) {}
 
   ngOnInit(): void {
@@ -19,7 +19,6 @@ export class AllCategoriesComponent implements OnInit {
     this.categoryServise.getList().subscribe(
       (result) =>{
         if(result.result.status == '200')
-        console.log(result);
           this.categories = result.data.categoryList;
           this.loading = false;
       },
@@ -28,6 +27,16 @@ export class AllCategoriesComponent implements OnInit {
         this.loading = false;
       }
     );
+  }
+
+  onImgError($event)
+  {
+    $event.target.src = "assets/images/placeholder-image.png";
+  }
+
+  deatilsCategory(categoryNo)
+  {
+    this.router.navigate(['/dashboard/categories/details-category/'+categoryNo]);
   }
 
 }

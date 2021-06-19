@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DiscountService } from 'src/app/services/discount.service';
 import { mainFunctions } from 'src/main';
 
@@ -11,7 +11,7 @@ import { mainFunctions } from 'src/main';
 })
 export class EditDiscountComponent implements OnInit {
 
-  discount!: { discountNo:number 
+  discount: { discountNo:number 
               ,discountRate: string
               ,createOn: string
               ,startDate: string
@@ -23,42 +23,49 @@ export class EditDiscountComponent implements OnInit {
   submitted = false;
   loading:boolean=false;
 
-  constructor(private discountServise:DiscountService , private router:Router,private formBuilder: FormBuilder) {
+  patchValues() {
+    this.editDiscountForm.patchValue({
+      discountNo :this.discount!.discountNo
+      ,discountRate: this.discount!.discountRate
+      ,createOn: this.discount!.createOn
+      ,startDate: this.discount!.startDate
+      ,expirDate: this.discount!.expirDate
+      ,discountMaxValue:this.discount!.discountMaxValue
+      ,enabled: this.discount!.enabled
+      ,createAdm: this.discount!.createAdm 
+    })
+  }
 
-    const navigation = this.router.getCurrentNavigation();
-
-    if(navigation && navigation.extras?.state)
-      this.discount = navigation.extras.state as { 
-        discountNo:number 
-        ,discountRate: string
-        ,createOn: string
-        ,startDate: string
-        ,expirDate: string
-        ,discountMaxValue:number|null
-        ,enabled: number
-        ,createAdm: number };
-    else
-      {
-        this.discount = { 
-          discountNo:-1 
-          ,discountRate: ''
-          ,createOn: ''
-          ,startDate: '2021-03-31'
-          ,expirDate: '2021-03-12'
-          ,discountMaxValue:null
-          ,enabled: 1
-          ,createAdm: 1 };
-        this.router.navigate(['/dashboard/discounts']);
-      }
-      
-   }
+  constructor(private discountServise:DiscountService ,private activatedroute: ActivatedRoute, private router:Router,private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.loading=true;
 
+    const discountid = this.activatedroute.snapshot.paramMap.get('id');
+    this.discountServise.getByCode({discountNo:discountid}).subscribe(
+      (result) =>{
+        if(result.result.status == '200')
+        {
+          this.discount = result.data.discount;
+          this.patchValues();
+          this.loading=false;
+
+        }
+        else
+        {
+          this.loading=false;
+          this.router.navigate(['/dashboard/discounts']);
+        }
+      },
+      error => {
+        this.loading=false;
+      });
+
+   
     this.editDiscountForm = this.formBuilder.group({
-      discountNo:[this.discount.discountNo],
-      createOn:[this.discount.createOn],
-      createAdm:[this.discount.createAdm],
+      discountNo:[''],
+      createOn:[''],
+      createAdm:[''],
       discountRate: ['', [Validators.required, Validators.pattern('\\d+([.]\\d+)?')]],
       discountMaxValue:[''],
       startDate: ['', [Validators.required]],
@@ -66,7 +73,6 @@ export class EditDiscountComponent implements OnInit {
       enabled: ['', [Validators.required]]
     });
 
-    this.editDiscountForm.setValue(this.discount);
   }
   get f() { return this.editDiscountForm.controls; }
 

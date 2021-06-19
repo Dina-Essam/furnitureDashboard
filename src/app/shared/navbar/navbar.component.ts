@@ -11,7 +11,7 @@ import { mainFunctions } from 'src/main';
 export class NavbarComponent implements OnInit {
 
   Languages=environment.languages;
-  currentLang = mainFunctions.currentLange;
+  currentLang =mainFunctions.getCurrentLanguage();
   adminData:any;
 
   constructor(private authService:AuthService) {  
@@ -24,9 +24,14 @@ export class NavbarComponent implements OnInit {
   onOptionsSelected(event:any)
   {
     let value = event.target.value;
-    var y: number = +value;
-    mainFunctions.currentLange=y;
-    window.location.reload()
+    mainFunctions.setCurrentLanguage(value)
+    location.reload()
   }
+
+  onImgError($event)
+  {
+    $event.target.src = "assets/images/placeholder-male.jpg";
+  }
+
 
 }

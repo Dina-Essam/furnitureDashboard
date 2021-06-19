@@ -45,7 +45,7 @@
                                             <form class="form-material" [formGroup]="editDiscountForm" (ngSubmit)="EditDiscount()" >
                                                 <div class="form-group form-default pb-2">
                                                     <input type="text" name="discountRate" class="form-control"
-                                                        value="{{discount.discountRate}}" formControlName="discountRate"
+                                                         formControlName="discountRate"
                                                         [ngClass]="{ 'is-invalid': submitted && f.discountRate.errors }" 
                                                     >
                                                     <span class="form-bar"></span>
@@ -63,7 +63,7 @@
 
                                                 <div class="form-group form-default pb-2">
                                                     <input type="text" name="discountMaxValue" class="form-control"
-                                                        value="{{discount.discountMaxValue}}" formControlName="discountMaxValue"
+                                                         formControlName="discountMaxValue"
                                                         [ngClass]="{ 'is-invalid': submitted && f.discountMaxValue.errors }" 
                                                     >
                                                     <span class="form-bar"></span>
@@ -75,7 +75,7 @@
 
                                                 <div class="form-group form-default pb-2">
                                                     <input type="date" name="startDate" class="form-control" 
-                                                    value="{{discount.startDate}}" formControlName="startDate"
+                                                     formControlName="startDate"
                                                         [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }" 
                                                     >
                                                     <span class="form-bar"></span>
@@ -90,7 +90,7 @@
                                                 <div class="form-group form-default pb-2">
                                                     <div>
                                                         <input type="date" name="expirDate" class="form-control"
-                                                        value="{{discount.expirDate}}" formControlName="expirDate"
+                                                         formControlName="expirDate"
                                                         [ngClass]="{ 'is-invalid': submitted && f.expirDate.errors }" 
                                                         >
                                                         <span class="form-bar"></span>
@@ -106,7 +106,7 @@
                                                 <div class="form-group form-default pb-2">
                                                     <div class="custom-control form-control-lg custom-checkbox">
                                                         <input class="custom-control-input" type="checkbox" name="enabled" id="enabled"
-                                                        value="{{discount.enabled}}" formControlName="enabled"
+                                                         formControlName="enabled"
                                                         [ngClass]="{ 'is-invalid': submitted && f.enabled.errors }"
                                                         (change)="this.editDiscountForm.value.enabled = this.editDiscountForm.value.enabled ? 1: 0">
                                                         <label class="custom-control-label base-color" for="enabled">Enabled</label>

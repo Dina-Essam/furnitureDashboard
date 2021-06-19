@@ -1,0 +1,15 @@
+.example-card {
+    max-width: 400px;
+  }
+.card-img-top {
+    max-height: 300px;
+    min-height: 250px;
+    object-fit: cover;
+}
+.btn-outline-primary{
+    background-color: white !important;
+}
+.btn-outline-primary:hover, .btn-outline-primary:active, .btn-outline-primary:visited {
+    background-color: var(--base-color) !important;
+    color:white !important;
+}

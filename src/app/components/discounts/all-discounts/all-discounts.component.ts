@@ -34,19 +34,7 @@ export class AllDiscountsComponent implements OnInit {
 
   updateDiscount(discount:any)
   {
-    const navigationExtras: NavigationExtras = {
-      state: {
-        discountNo:discount.discountNo 
-        ,discountRate: discount.discountRate
-        ,createOn: discount.createOn 
-        ,startDate: discount.startDate
-        ,expirDate: discount.expirDate
-        ,discountMaxValue: discount.discountMaxValue
-        ,enabled: discount.enabled
-        ,createAdm: discount.createAdm
-      }
-    };
-    this.router.navigate(['/dashboard/discounts/update-discount/'+discount.discountNo], navigationExtras);
+    this.router.navigate(['/dashboard/discounts/update-discount/'+discount.discountNo]);
   }
 
 }
