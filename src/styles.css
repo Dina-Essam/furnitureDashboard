@@ -16449,3 +16449,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .page-header{
   bottom: 3px;
 }
+
+
+.myapp-no-padding-dialog .mat-dialog-container {   
+    padding: 0px !important;
+  }

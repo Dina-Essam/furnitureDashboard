@@ -15,7 +15,8 @@ export class ErrorDialogService {
         this.isDialogOpen = true;
         this.dialogRef = this.dialog.open(ErrorDialogComponent, {
             width: '300px',
-            data: data
+            data: data,
+            panelClass: 'myapp-no-padding-dialog'
         });
 
         this.dialogRef.afterClosed().subscribe((result: any) => {
