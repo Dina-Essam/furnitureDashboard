@@ -64,33 +64,37 @@ export class EditCityComponent implements OnInit {
   EditCity()
   {
       this.submitted = true;
-      this.loading=true;
-      this.cityServise.update(this.editCityForm.value).subscribe(
-        (result) =>{
-          if(result.result.status == '200')
-          {
+      if(!this.editCityForm.invalid)
+      {
+        this.loading=true;
+        this.cityServise.update(this.editCityForm.value).subscribe(
+          (result) =>{
+            if(result.result.status == '200')
+            {
+              this.loading=false;
+              this.router.navigate(['/dashboard/cities']);
+            }
+            else if(result.result.status === 422 && typeof result.result.errors != "undefined") 
+            {
+              let validationErrors = mainFunctions.getError(result.result.errors);
+              Object.keys(validationErrors).forEach(prop => {
+                const formControl = this.editCityForm.get(prop);
+                if (formControl) {
+                  // activate the error message
+                  formControl.setErrors({
+                    serverError: validationErrors[prop as any]
+                  });
+                }
+              });
+            }
             this.loading=false;
-            this.router.navigate(['/dashboard/cities']);
+          },
+          error =>{
+            this.loading=false;
           }
-          else if(result.result.status === 422 && typeof result.result.errors != "undefined") 
-          {
-            let validationErrors = mainFunctions.getError(result.result.errors);
-            Object.keys(validationErrors).forEach(prop => {
-              const formControl = this.editCityForm.get(prop);
-              if (formControl) {
-                // activate the error message
-                formControl.setErrors({
-                  serverError: validationErrors[prop as any]
-                });
-              }
-            });
-          }
-          this.loading=false;
-        },
-        error =>{
-          this.loading=false;
-        }
-      );
+        );
+      }
+      
   }
 
 }

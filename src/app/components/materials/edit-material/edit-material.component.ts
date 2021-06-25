@@ -62,33 +62,37 @@ export class EditMaterialComponent implements OnInit {
   EditMaterial()
   {
       this.submitted = true;
-      this.loading=true;
-      this.materialServise.update(this.editMaterialForm.value).subscribe(
-        (result) =>{
-          if(result.result.status == '200')
-          {
+      if(!this.editMaterialForm.invalid)
+      {
+        this.loading=true;
+        this.materialServise.update(this.editMaterialForm.value).subscribe(
+          (result) =>{
+            if(result.result.status == '200')
+            {
+              this.loading=false;
+              this.router.navigate(['/dashboard/materials']);
+            }
+            else if(result.result.status === 422 && typeof result.result.errors != "undefined") 
+            {
+              let validationErrors = mainFunctions.getError(result.result.errors);
+              Object.keys(validationErrors).forEach(prop => {
+                const formControl = this.editMaterialForm.get(prop);
+                if (formControl) {
+                  // activate the error message
+                  formControl.setErrors({
+                    serverError: validationErrors[prop as any]
+                  });
+                }
+              });
+            }
             this.loading=false;
-            this.router.navigate(['/dashboard/materials']);
+          },
+          error =>{
+            this.loading=false;
           }
-          else if(result.result.status === 422 && typeof result.result.errors != "undefined") 
-          {
-            let validationErrors = mainFunctions.getError(result.result.errors);
-            Object.keys(validationErrors).forEach(prop => {
-              const formControl = this.editMaterialForm.get(prop);
-              if (formControl) {
-                // activate the error message
-                formControl.setErrors({
-                  serverError: validationErrors[prop as any]
-                });
-              }
-            });
-          }
-          this.loading=false;
-        },
-        error =>{
-          this.loading=false;
-        }
-      );
+        );
+      }
+      
   }
 
 }

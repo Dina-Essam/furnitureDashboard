@@ -1,5 +1,5 @@
 <nav class="pcoded-navbar">
-    <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+    <div class="sidebar_toggle"><a><i class="icon-close icons"></i></a></div>
     <div class="pcoded-inner-navbar main-menu">
         <div class="">
             <div class="main-menu-header">
@@ -41,6 +41,25 @@
                 <a [routerLink]="['/dashboard/abouts-active']" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="ti-pencil-alt"></i><b>FC</b></span>
                     <span class="pcoded-mtext" >Active Abouts</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+            </li>
+
+        </ul>
+
+        <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Policy</div>
+        <ul class="pcoded-item pcoded-left-item">
+            <li>
+                <a [routerLink]="['/dashboard/policies']" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="ti-pencil-alt"></i><b>FC</b></span>
+                    <span class="pcoded-mtext" >All Policies</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['/dashboard/policies-active']" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="ti-pencil-alt"></i><b>FC</b></span>
+                    <span class="pcoded-mtext" >Active Policies</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>

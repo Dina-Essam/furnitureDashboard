@@ -47,6 +47,14 @@ import { AllAboutsComponent } from './components/abouts/all-abouts/all-abouts.co
 import { AllActiveAboutsComponent } from './components/abouts/all-active-abouts/all-active-abouts.component';
 import { AllCategoriesComponent } from './components/categories/all-categories/all-categories.component';
 import { AllCategoryDetailsComponent } from './components/categories/all-category-details/all-category-details.component';
+import { CreateCategoryDetailsComponent } from './components/categories/create-category-details/create-category-details.component';
+import { EditCategoryDetailsComponent } from './components/categories/edit-category-details/edit-category-details.component';
+import { EditAboutComponent } from './components/abouts/edit-about/edit-about.component';
+import { CreateAboutComponent } from './components/abouts/create-about/create-about.component';
+import { EditPolicyComponent } from './components/policies/edit-policy/edit-policy.component';
+import { CreatePolicyComponent } from './components/policies/create-policy/create-policy.component';
+import { AllPoliciesComponent } from './components/policies/all-policies/all-policies.component';
+import { AllActivePoliciesComponent } from './components/policies/all-active-policies/all-active-policies.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +92,15 @@ import { AllCategoryDetailsComponent } from './components/categories/all-categor
     AllAboutsComponent,
     AllActiveAboutsComponent,
     AllCategoriesComponent,
-    AllCategoryDetailsComponent
+    AllCategoryDetailsComponent,
+    CreateCategoryDetailsComponent,
+    EditCategoryDetailsComponent,
+    EditAboutComponent,
+    CreateAboutComponent,
+    EditPolicyComponent,
+    CreatePolicyComponent,
+    AllPoliciesComponent,
+    AllActivePoliciesComponent
     ],
   imports: [
     BrowserModule,

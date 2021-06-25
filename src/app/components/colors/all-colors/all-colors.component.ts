@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { ColorService } from 'src/app/services/color.service';
+import { DynamicScriptLoaderService } from 'src/app/services/dynamic-script-loader.service';
 
 @Component({
   selector: 'app-all-colors',
@@ -11,7 +12,7 @@ export class AllColorsComponent implements OnInit {
   colors: any;
   loading:boolean=false;
 
-  constructor(private colorServise:ColorService, private router:Router) {}
+  constructor(private colorServise:ColorService, private router:Router,private dynamicScriptLoader:DynamicScriptLoaderService) {}
 
   ngOnInit(): void {
     this.loading=true;
@@ -27,7 +28,7 @@ export class AllColorsComponent implements OnInit {
         }
     );
   }
-
+  
   updateColor(color:any)
   {
     const navigationExtras: NavigationExtras = {

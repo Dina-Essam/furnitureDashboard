@@ -50,7 +50,7 @@ export class EditFinishComponent implements OnInit {
       );
 
     this.editFinishForm = this.formBuilder.group({
-      finishNo :[],
+      finishNo :[''],
       finishNmEn: ['', [Validators.required]],
       finishNmAr: ['', [Validators.required]],
     });
@@ -61,33 +61,37 @@ export class EditFinishComponent implements OnInit {
   EditFinish()
   {
       this.submitted = true;
-      this.loading=true;
-      this.finishServise.update(this.editFinishForm.value).subscribe(
-        (result) =>{
-          if(result.result.status == '200')
-          {
+      if(!this.editFinishForm.invalid)
+      {
+        this.loading=true;
+        this.finishServise.update(this.editFinishForm.value).subscribe(
+          (result) =>{
+            if(result.result.status == '200')
+            {
+              this.loading=false;
+              this.router.navigate(['/dashboard/finishes']);
+            }
+            else if(result.result.status === 422 && typeof result.result.errors != "undefined") 
+            {
+              let validationErrors = mainFunctions.getError(result.result.errors);
+              Object.keys(validationErrors).forEach(prop => {
+                const formControl = this.editFinishForm.get(prop);
+                if (formControl) {
+                  // activate the error message
+                  formControl.setErrors({
+                    serverError: validationErrors[prop as any]
+                  });
+                }
+              });
+            }
             this.loading=false;
-            this.router.navigate(['/dashboard/finishes']);
+          },
+          error =>{
+            this.loading=false;
           }
-          else if(result.result.status === 422 && typeof result.result.errors != "undefined") 
-          {
-            let validationErrors = mainFunctions.getError(result.result.errors);
-            Object.keys(validationErrors).forEach(prop => {
-              const formControl = this.editFinishForm.get(prop);
-              if (formControl) {
-                // activate the error message
-                formControl.setErrors({
-                  serverError: validationErrors[prop as any]
-                });
-              }
-            });
-          }
-          this.loading=false;
-        },
-        error =>{
-          this.loading=false;
-        }
-      );
+        );
+      }
+      
   }
 
 }

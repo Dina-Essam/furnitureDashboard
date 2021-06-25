@@ -31,7 +31,11 @@
                         <!-- <div class="row"> -->
                             <!-- task, page, download counter  start -->
                             <!-- Hover table card start -->
-
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <button class="btn waves-effect waves-light btn-outline-success float-right" [routerLink]="['create-category']" ><i class="ti-plus"></i>Add Category</button>
+                                </div>
+                            </div>
 
                             <div *ngIf="categories">
                                 <div class="row">

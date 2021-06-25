@@ -40,6 +40,7 @@
                                             <img class="card-img-top" [src]="img.imgPath" alt="My image {{category?.catNameEn}} description" (error) ="onImgError($event)" loading ="lazy">
                                         </div>
                                     <div class="carousel-caption">
+                                        <a class="delete-image float-right" [routerLink]="" (click)="deleteImage(img)" ><i class="ti-trash " style="font-size: 2.2em;"></i><b>Delete</b></a>
                                         <h3>{{category?.catNameEn}}</h3>
                                     </div>
                                     </ng-template>

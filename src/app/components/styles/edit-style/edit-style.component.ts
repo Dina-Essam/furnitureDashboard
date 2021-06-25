@@ -61,33 +61,37 @@ export class EditStyleComponent implements OnInit {
   EditStyle()
   {
       this.submitted = true;
-      this.loading=true;
-      this.styleServise.update(this.editStyleForm.value).subscribe(
-        (result) =>{
-          if(result.result.status == '200')
-          {
+      if(!this.editStyleForm.invalid)
+      {
+        this.loading=true;
+        this.styleServise.update(this.editStyleForm.value).subscribe(
+          (result) =>{
+            if(result.result.status == '200')
+            {
+              this.loading=false;
+              this.router.navigate(['/dashboard/styles']);
+            }
+            else if(result.result.status === 422 && typeof result.result.errors != "undefined") 
+            {
+              let validationErrors = mainFunctions.getError(result.result.errors);
+              Object.keys(validationErrors).forEach(prop => {
+                const formControl = this.editStyleForm.get(prop);
+                if (formControl) {
+                  // activate the error message
+                  formControl.setErrors({
+                    serverError: validationErrors[prop as any]
+                  });
+                }
+              });
+            }
             this.loading=false;
-            this.router.navigate(['/dashboard/styles']);
+          },
+          error =>{
+            this.loading=false;
           }
-          else if(result.result.status === 422 && typeof result.result.errors != "undefined") 
-          {
-            let validationErrors = mainFunctions.getError(result.result.errors);
-            Object.keys(validationErrors).forEach(prop => {
-              const formControl = this.editStyleForm.get(prop);
-              if (formControl) {
-                // activate the error message
-                formControl.setErrors({
-                  serverError: validationErrors[prop as any]
-                });
-              }
-            });
-          }
-          this.loading=false;
-        },
-        error =>{
-          this.loading=false;
-        }
-      );
+        );
+      }
+      
   }
 
 }

@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Image } from 'src/app/models/image.model';
 import { CategoryService } from 'src/app/services/category.service';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-all-category-details',
@@ -27,7 +28,7 @@ export class AllCategoryDetailsComponent implements OnInit {
       noOfProducts: number
     };
 
-  constructor(private categoryServise:CategoryService ,private activatedroute: ActivatedRoute ,private router:Router,private formBuilder: FormBuilder) { }
+  constructor(private categoryServise:CategoryService,private imageServise:ImageService ,private activatedroute: ActivatedRoute ,private router:Router,private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
 
@@ -62,13 +63,40 @@ export class AllCategoryDetailsComponent implements OnInit {
 
   deleteCategory()
   {
+    this.loading=true;
+
     this.categoryServise.delete({catNo:this.category.catNo}).subscribe(
       (result) =>{
         if(result.result.status == '200')
-        this.router.navigate(['/dashboard/categories']);
+        {
+          this.loading=false;
+          this.router.navigate(['/dashboard/categories']);
+        }
+      },
+      error => {
+        this.loading=false;
       }
     );
   }
+
+  deleteImage(image)
+  {
+    this.loading=true;
+
+    this.imageServise.delete({imgNo:image.imgNo}).subscribe(
+      (result) =>{
+        if(result.result.status == '200')
+        {
+          this.loading=false;
+          this.ngOnInit();
+        }
+      },
+      error => {
+        this.loading=false;
+      }
+    );
+  }
+
   editCategory()
   {
     this.router.navigate(['/dashboard/categories/update-category/'+this.category.catNo]);

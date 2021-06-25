@@ -31,6 +31,14 @@ import { AllAboutsComponent } from './components/abouts/all-abouts/all-abouts.co
 import { AllActiveAboutsComponent } from './components/abouts/all-active-abouts/all-active-abouts.component';
 import { AllCategoriesComponent } from './components/categories/all-categories/all-categories.component';
 import { AllCategoryDetailsComponent } from './components/categories/all-category-details/all-category-details.component';
+import { CreateCategoryDetailsComponent } from './components/categories/create-category-details/create-category-details.component';
+import { EditCategoryDetailsComponent } from './components/categories/edit-category-details/edit-category-details.component';
+import { EditAboutComponent } from './components/abouts/edit-about/edit-about.component';
+import { CreateAboutComponent } from './components/abouts/create-about/create-about.component';
+import { AllPoliciesComponent } from './components/policies/all-policies/all-policies.component';
+import { AllActivePoliciesComponent } from './components/policies/all-active-policies/all-active-policies.component';
+import { CreatePolicyComponent } from './components/policies/create-policy/create-policy.component';
+import { EditPolicyComponent } from './components/policies/edit-policy/edit-policy.component';
 
 const routes =[
   {
@@ -162,6 +170,16 @@ const routes =[
         canActivate: [AuthGuard],
       },
       {
+        path: 'abouts/update-about/:id',
+        component: EditAboutComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'abouts/create-about',
+        component: CreateAboutComponent,
+        canActivate: [AuthGuard],
+      },
+      {
         path: 'abouts-active',
         component: AllActiveAboutsComponent,
         canActivate: [AuthGuard],
@@ -175,7 +193,37 @@ const routes =[
         path: 'categories/details-category/:id',
         component: AllCategoryDetailsComponent,
         canActivate: [AuthGuard],
-      }
+      },
+      {
+        path: 'categories/update-category/:id',
+        component: EditCategoryDetailsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'categories/create-category',
+        component: CreateCategoryDetailsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'policies',
+        component: AllPoliciesComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'policies/update-policy/:id',
+        component: EditPolicyComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'policies/create-policy',
+        component: CreatePolicyComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'policies-active',
+        component: AllActivePoliciesComponent,
+        canActivate: [AuthGuard],
+      },
 
     ]
   },

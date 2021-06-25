@@ -8,3 +8,11 @@
     height: 100px;
     width: 100%;
 }
+
+.delete-image{
+    color: white !important;
+}
+
+.delete-image:hover{
+    color: red !important;
+}

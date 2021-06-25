@@ -62,33 +62,37 @@ loading:boolean=false;
   EditTax()
   {
       this.submitted = true;
-      this.loading=true;
-      this.editTaxForm.value.enabled = this.editTaxForm.value.enabled ? 1: 0;
-      this.taxesService.update(this.editTaxForm.value).subscribe(
-        (result) =>{
-          if(result.result.status == '200')
-          {
+      if(!this.editTaxForm.invalid)
+      {
+        this.loading=true;
+        this.editTaxForm.value.enabled = this.editTaxForm.value.enabled ? 1: 0;
+        this.taxesService.update(this.editTaxForm.value).subscribe(
+          (result) =>{
+            if(result.result.status == '200')
+            {
+              this.loading=false;
+              this.router.navigate(['/dashboard/discounts']);
+            }
+            else if(typeof result.result.errors != "undefined") 
+            {
+              let validationErrors = mainFunctions.getError(result.result.errors);
+              Object.keys(validationErrors).forEach(prop => {
+                const formControl = this.editTaxForm.get(prop);
+                if (formControl) {
+                  formControl.setErrors({
+                    serverError: validationErrors[prop as any]
+                  });
+                }
+              });
+            }
             this.loading=false;
-            this.router.navigate(['/dashboard/discounts']);
+          },
+          error =>{
+            this.loading=false;
           }
-          else if(typeof result.result.errors != "undefined") 
-          {
-            let validationErrors = mainFunctions.getError(result.result.errors);
-            Object.keys(validationErrors).forEach(prop => {
-              const formControl = this.editTaxForm.get(prop);
-              if (formControl) {
-                formControl.setErrors({
-                  serverError: validationErrors[prop as any]
-                });
-              }
-            });
-          }
-          this.loading=false;
-        },
-        error =>{
-          this.loading=false;
-        }
-      );
+        );
+      }
+      
   }
 
 }

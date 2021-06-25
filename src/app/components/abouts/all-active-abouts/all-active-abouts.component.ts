@@ -28,5 +28,26 @@ export class AllActiveAboutsComponent implements OnInit {
       }
     );
   }
+  updateAbout(about:any)
+  {
+    this.router.navigate(['/dashboard/abouts/update-about/'+about.aboutNo]);
+  }
+
+  deleteAbout(about:any)
+  {
+    this.loading = true;
+
+    this.aboutServise.delete(about).subscribe(
+      (result) =>{
+        if(result.result.status == '200')
+        window.location.reload();
+        this.loading = false;
+      },
+      error=>
+      {    
+        this.loading = false;
+      }
+    );
+  }
 
 }

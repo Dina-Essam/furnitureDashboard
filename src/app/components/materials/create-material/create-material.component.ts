@@ -29,6 +29,8 @@ export class CreateMaterialComponent implements OnInit {
   CreateMaterial()
   {
     this.submitted = true;
+    if(!this.createMaterialForm.invalid)
+    {
       this.loading=true;
       this.materialServise.create(this.createMaterialForm.value).subscribe(
         (result) =>{
@@ -56,6 +58,8 @@ export class CreateMaterialComponent implements OnInit {
           this.loading=false;
         }
       );
+    }
+      
   }
 
 

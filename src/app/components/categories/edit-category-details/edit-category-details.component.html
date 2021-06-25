@@ -1,0 +1,118 @@
+
+        <div class="pcoded-content">
+            <!-- Page-header start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Edit Category</h5>
+                                <p class="m-b-0">Welcome to La Maderas</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <ul class="breadcrumb-title">
+                                <li class="breadcrumb-item">
+                                    <a [routerLink]="['/dashboard']"> <i class="fa fa-home"></i> </a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a [routerLink]="['/dashboard/categories']">Categories</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a>Edit Category</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page-header end -->
+              <div class="pcoded-inner-content">
+                  <!-- Main-body start -->
+                  <div class="main-body">
+                      <div class="page-wrapper">
+                          <!-- Page-body start -->
+                          <div class="page-body">
+                              <div class="row">
+                                  <!-- task, page, download counter  start -->
+                                  <!-- Hover table card start -->
+                                  <div class="col">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Edit Category</h5>
+                                        </div>
+                                        <div class="card-block">
+                                            <form class="form-material" [formGroup] ="editCategoryForm" (ngSubmit)="EditCategory()" >
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="text" name="catNameAr" class="form-control" required
+                                                        formControlName="catNameAr"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.catNameAr.errors }"
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">Category Name in Arabic</label>
+                                                    <div *ngIf="submitted && f.catNameAr.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.catNameAr.errors!.required">Category Name in Arabic is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.catNameAr.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.catNameAr.errors?.serverError }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="text" name="catNameEn" class="form-control" required 
+                                                    formControlName="catNameEn"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.catNameEn.errors }"
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">Category Name in English</label>
+                                                    <div *ngIf="submitted && f.catNameEn.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.catNameEn.errors!.required">Category Name in English is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.catNameEn.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.catNameEn.errors?.serverError }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="text" name="catDscAr" class="form-control" required 
+                                                    formControlName="catDscAr"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.catDscAr.errors }"
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">Category Description Name in Arabic</label>
+                                                    <div *ngIf="submitted && f.catDscAr.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.catDscAr.errors!.required">Category Description in Arabic is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.catDscAr.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.catDscAr.errors?.serverError }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="text" name="catDscEn" class="form-control" required 
+                                                    formControlName="catDscEn"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.catDscEn.errors }"
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">Category Description Name in English</label>
+                                                    <div *ngIf="submitted && f.catDscEn.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.catDscEn.errors!.required">Category Description in English is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.catDscEn.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.catDscEn.errors?.serverError }}
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary base-bg border-base btn-md waves-effect waves-light text-center float-right mr-5">Edit</button>
+                                            </form>
+                                            <app-spinner [loading]="loading"></app-spinner>
+                                        </div>
+                                    </div>
+                                </div>
+                                  <!-- Hover table card end -->
+                                  <!--  project and team member end -->
+                              </div>
+                          </div>
+                          <!-- Page-body end -->
+                      </div>
+                      <div id="styleSelector"> </div>
+                  </div>
+              </div>
+        </div>
+    

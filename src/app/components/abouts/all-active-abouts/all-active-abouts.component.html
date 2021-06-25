@@ -59,16 +59,21 @@
                                                 <th>Order NNumber</th>
                                                 <th>Status</th>
                                                 <th>Create On</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr *ngFor="let about of abouts">
                                                 <th scope="row">{{about.aboutNo}}</th>
-                                                <td>{{about.aboutTxtAr}}</td>
-                                                <td>{{about.aboutTxtEn}}</td>
+                                                <td><div style="white-space: normal; word-wrap: break-word; word-break: break-word;">{{about.aboutTxtAr}}</div></td>
+                                                <td><div style="white-space: normal; word-wrap: break-word; word-break: break-word;">{{about.aboutTxtEn}}</div></td>
                                                 <td>{{about.orderNo}}</td>
                                                 <td>{{about.enabled === 1 ? 'Enabled' : 'Disabled'}}</td>
                                                 <td>{{about.createOn | date:'MM/dd/yyyy h:mm a'}}</td>
+                                                <td>
+                                                    <a [routerLink]="" (click)="updateAbout(about)"><i class="ti-pencil base-color"></i><b class="base-color">Edit</b></a><br>
+                                                    <a [routerLink]="" (click)="deleteAbout(about)"><i class="ti-trash base-color"></i><b class="base-color">Delete</b></a>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>

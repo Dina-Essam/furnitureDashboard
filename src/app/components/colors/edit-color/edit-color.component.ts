@@ -45,33 +45,37 @@ export class EditColorComponent implements OnInit {
   EditColor()
   {
       this.submitted = true;
-      this.loading=true;
-      this.colorServise.update(this.createColorForm.value).subscribe(
-        (result) =>{
-          if(result.result.status == '200')
-          {
+      if(!this.createColorForm.invalid)
+      {
+        this.loading=true;
+        this.colorServise.update(this.createColorForm.value).subscribe(
+          (result) =>{
+            if(result.result.status == '200')
+            {
+              this.loading=false;
+              this.router.navigate(['/dashboard/colors']);
+            }
+            else if(result.result.status === 422 && typeof result.result.errors != "undefined") 
+            {
+              let validationErrors = mainFunctions.getError(result.result.errors);
+              Object.keys(validationErrors).forEach(prop => {
+                const formControl = this.createColorForm.get(prop);
+                if (formControl) {
+                  // activate the error message
+                  formControl.setErrors({
+                    serverError: validationErrors[prop as any]
+                  });
+                }
+              });
+            }
             this.loading=false;
-            this.router.navigate(['/dashboard/colors']);
+          },
+          error =>{
+            this.loading=false;
           }
-          else if(result.result.status === 422 && typeof result.result.errors != "undefined") 
-          {
-            let validationErrors = mainFunctions.getError(result.result.errors);
-            Object.keys(validationErrors).forEach(prop => {
-              const formControl = this.createColorForm.get(prop);
-              if (formControl) {
-                // activate the error message
-                formControl.setErrors({
-                  serverError: validationErrors[prop as any]
-                });
-              }
-            });
-          }
-          this.loading=false;
-        },
-        error =>{
-          this.loading=false;
-        }
-      );
+        );
+      }
+      
   }
 
   addText(event) {

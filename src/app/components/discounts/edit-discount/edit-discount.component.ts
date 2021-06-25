@@ -79,33 +79,37 @@ export class EditDiscountComponent implements OnInit {
   EditDiscount()
   {
       this.submitted = true;
-      this.loading=true;
-      this.editDiscountForm.value.enabled = this.editDiscountForm.value.enabled ? 1: 0;
-      this.discountServise.update(this.editDiscountForm.value).subscribe(
-        (result) =>{
-          if(result.result.status == '200')
-          {
+      if(!this.editDiscountForm.invalid)
+      {
+        this.loading=true;
+        this.editDiscountForm.value.enabled = this.editDiscountForm.value.enabled ? 1: 0;
+        this.discountServise.update(this.editDiscountForm.value).subscribe(
+          (result) =>{
+            if(result.result.status == '200')
+            {
+              this.loading=false;
+              this.router.navigate(['/dashboard/discounts']);
+            }
+            else if(typeof result.result.errors != "undefined") 
+            {
+              let validationErrors = mainFunctions.getError(result.result.errors);
+              Object.keys(validationErrors).forEach(prop => {
+                const formControl = this.editDiscountForm.get(prop);
+                if (formControl) {
+                  formControl.setErrors({
+                    serverError: validationErrors[prop as any]
+                  });
+                }
+              });
+            }
             this.loading=false;
-            this.router.navigate(['/dashboard/discounts']);
+          },
+          error =>{
+            this.loading=false;
           }
-          else if(typeof result.result.errors != "undefined") 
-          {
-            let validationErrors = mainFunctions.getError(result.result.errors);
-            Object.keys(validationErrors).forEach(prop => {
-              const formControl = this.editDiscountForm.get(prop);
-              if (formControl) {
-                formControl.setErrors({
-                  serverError: validationErrors[prop as any]
-                });
-              }
-            });
-          }
-          this.loading=false;
-        },
-        error =>{
-          this.loading=false;
-        }
-      );
+        );
+      }
+      
   }
 
 }

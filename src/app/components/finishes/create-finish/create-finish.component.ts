@@ -28,6 +28,8 @@ export class CreateFinishComponent implements OnInit {
   CreateFinish()
   {
     this.submitted = true;
+    if(!this.createFinishForm.invalid)
+    {
       this.loading=true;
       this.finishServise.create(this.createFinishForm.value).subscribe(
         (result) =>{
@@ -56,6 +58,8 @@ export class CreateFinishComponent implements OnInit {
           this.loading=false;
         }
       );
+    }
+      
   }
 
 }

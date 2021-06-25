@@ -30,6 +30,8 @@ export class CreateStyleComponent implements OnInit {
   CreateStyle()
   {
     this.submitted = true;
+    if(!this.createStyleForm.invalid)
+    {
       this.loading=true;
       this.styleServise.create(this.createStyleForm.value).subscribe(
         (result) =>{
@@ -57,6 +59,8 @@ export class CreateStyleComponent implements OnInit {
           this.loading=false;
         }
       );
+    }
+      
   }
 
 

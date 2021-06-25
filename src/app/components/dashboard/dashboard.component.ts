@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DynamicScriptLoaderService } from 'src/app/services/dynamic-script-loader.service';
 
 @Component({
   selector: 'app-dashboard',

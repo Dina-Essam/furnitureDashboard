@@ -28,6 +28,8 @@ export class CreateCityComponent implements OnInit {
   CreateCity()
   {
     this.submitted = true;
+    if(!this.createCityForm.invalid)
+    {
       this.loading=true;
       this.cityServise.create(this.createCityForm.value).subscribe(
         (result) =>{
@@ -55,5 +57,7 @@ export class CreateCityComponent implements OnInit {
           this.loading=false;
         } 
       );
+    }
+      
   }
 }

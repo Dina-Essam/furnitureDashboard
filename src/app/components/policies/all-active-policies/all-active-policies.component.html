@@ -1,0 +1,93 @@
+<div class="pcoded-content">
+    <!-- Page-header start -->
+    <div class="page-header">
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="page-header-title">
+                        <h5 class="m-b-10">Active Policies</h5>
+                        <p class="m-b-0">Welcome to La Maderas</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <ul class="breadcrumb-title">
+                        <li class="breadcrumb-item">
+                            <a [routerLink]="['/dashboard']"> <i class="fa fa-home"></i> </a>
+                        </li>
+                        <li class="breadcrumb-item"><a>Active Policies</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page-header end -->
+        <div class="pcoded-inner-content">
+            <!-- Main-body start -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- Page-body start -->
+                    <div class="page-body">
+                        <div class="row">
+                            <div class="col mb-3">
+                            <button class="btn waves-effect waves-light btn-outline-success float-right" [routerLink]="['create-policy']" ><i class="ti-plus"></i>Add Policy</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- task, page, download counter  start -->
+                            <!-- Hover table card start -->
+                            <div class="col card">
+                            <div class="card-header">
+                                <h5>Active Policies Table</h5>
+                                <div class="card-header-right">
+                                    <ul class="list-unstyled card-option">
+                                        <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                        <li><i class="fa fa-window-maximize full-card"></i></li>
+                                        <li><i class="fa fa-minus minimize-card"></i></li>
+                                        <li><i class="fa fa-refresh reload-card"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-block table-border-style">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Number</th>
+                                                <th>Policy in Arabic</th>
+                                                <th>Policy in English</th>
+                                                <th>Order Number</th>
+                                                <th>Status</th>
+                                                <th>Create On</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let policy of policies">
+                                                <th scope="row">{{policy.policyNo}}</th>
+                                                <td><div style="white-space: normal; word-wrap: break-word; word-break: break-word;">{{policy.policyTxtAr}}</div></td>
+                                                <td><div style="white-space: normal; word-wrap: break-word; word-break: break-word;">{{policy.policyTxtEn}}</div></td>
+                                                <td>{{policy.orderNo}}</td>
+                                                <td>{{policy.enabled === 1 ? 'Enabled' : 'Disabled'}}</td>
+                                                <td>{{policy.createOn | date:'MM/dd/yyyy h:mm a'}}</td>
+                                                <td>
+                                                    <a [routerLink]="" (click)="updatePolicy(policy)"><i class="ti-pencil base-color"></i><b class="base-color">Edit</b></a><br>
+                                                    <a [routerLink]="" (click)="deletePolicy(policy)"><i class="ti-trash base-color"></i><b class="base-color">Delete</b></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Hover table card end -->
+                            <!--  project and team member end -->
+                        </div>
+                        <app-spinner [loading]="loading"></app-spinner>
+                    </div>
+                    <!-- Page-body end -->
+                </div>
+                <div id="styleSelector"> </div>
+            </div>
+        </div>
+</div>
