@@ -5,20 +5,20 @@ import { environment } from 'src/environments/environment';
 import { mainFunctions } from 'src/main';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AboutService {
+  _allAboutsUrl = environment.apiUrl + '​/lamaderas/v1/About/getAboutList';
+  _allActiveAboutsUrl =
+    environment.apiUrl + '/lamaderas/v1/About/getActiveAboutList';
+  _createAboutUrl = environment.apiUrl + '/lamaderas/v1/About/addAbout';
+  _addAboutImageUrl = environment.apiUrl + '/lamaderas/v1/About/addAboutImage';
+  _deleteAboutUrl = environment.apiUrl + '/lamaderas/v1/About/deleteAbout';
+  _updateAboutUrl = environment.apiUrl + '/lamaderas/v1/About/updateAbout';
+  _getAboutByCodeUrl =
+    environment.apiUrl + '/lamaderas/v1/About/getAboutByCode';
 
-  _allAboutsUrl = environment.apiUrl+'​/lamaderas/v1/ADM/About/getAboutList';
-  _allActiveAboutsUrl = environment.apiUrl+'/lamaderas/v1/ADM/About/getActiveAboutList';
-  _createAboutUrl = environment.apiUrl+'/lamaderas/v1/ADM/About/addAbout';
-  _addAboutImageUrl =  environment.apiUrl+'/lamaderas/v1/ADM/About/addAboutImage';
-  _deleteAboutUrl = environment.apiUrl+'/lamaderas/v1/ADM/About/deleteAbout';
-  _updateAboutUrl = environment.apiUrl+'/lamaderas/v1/ADM/About/updateAbout';
-  _getAboutByCodeUrl = environment.apiUrl+'/lamaderas/v1/ADM/About/getAboutByCode';
-
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getList(): Observable<any> {
     let request = mainFunctions.requestData();
@@ -31,25 +31,25 @@ export class AboutService {
     return this.http.post<any>(this._allActiveAboutsUrl, request);
   }
   create(AboutData: any): Observable<any> {
-    let request = mainFunctions.requestData('about' , AboutData);
+    let request = mainFunctions.requestData('about', AboutData);
 
-    return this.http.post(this._createAboutUrl,request);
+    return this.http.post(this._createAboutUrl, request);
   }
 
   update(AboutData: any): Observable<any> {
-    let request = mainFunctions.requestData('about' , AboutData);
+    let request = mainFunctions.requestData('about', AboutData);
 
     return this.http.post(this._updateAboutUrl, request);
   }
 
   delete(AboutData: any): Observable<any> {
-    let request = mainFunctions.requestData('about' , AboutData);
+    let request = mainFunctions.requestData('about', AboutData);
 
     return this.http.post(this._deleteAboutUrl, request);
   }
 
   getByCode(AboutData: any): Observable<any> {
-    let request = mainFunctions.requestData('about' , AboutData);
+    let request = mainFunctions.requestData('about', AboutData);
 
     return this.http.post(this._getAboutByCodeUrl, request);
   }

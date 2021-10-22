@@ -6,25 +6,23 @@ import { catchError, tap } from 'rxjs/operators';
 import { mainFunctions } from 'src/main';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  _loginUrl = environment.apiUrl+'/lamaderas/v1/ADM/Admin/login';
+  _loginUrl = environment.apiUrl + '/lamaderas/v1/Admin/login';
 
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private readonly JWT_ADMINDATA = 'JWT_ADMINDATA';
   constructor(private http: HttpClient) {}
 
-  login(loginData:any): Observable<any> {
-    let request = mainFunctions.requestData('loginData' , loginData);
-    return this.http.post<any>(this._loginUrl, request)
-      .pipe(
-        tap(data => {
-          if(data.result.status == '200')
-            this.storeToken(data.data.token);
-            this.storeAdminData(data.data.admin);
-        })
-        );
+  login(loginData: any): Observable<any> {
+    let request = mainFunctions.requestData('loginData', loginData);
+    return this.http.post<any>(this._loginUrl, request).pipe(
+      tap((data) => {
+        if (data.result.status == '200') this.storeToken(data.data.token);
+        this.storeAdminData(data.data.admin);
+      })
+    );
   }
 
   Logout() {
@@ -48,10 +46,8 @@ export class AuthService {
   }
 
   getAdminData() {
-     let data =localStorage.getItem(this.JWT_ADMINDATA);
-     if(data)
-      return  JSON.parse(data);
+    let data = localStorage.getItem(this.JWT_ADMINDATA);
+    if (data) return JSON.parse(data);
     return null;
   }
-
 }
