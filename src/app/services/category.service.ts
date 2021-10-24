@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { mainFunctions } from 'src/main';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CategoryService {
 
@@ -17,31 +17,34 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
+
   getList(): Observable<any> {
     let request = mainFunctions.requestData();
 
     return this.http.post<any>(this._allCategoriesUrl, request);
   }
   create(CategoryData: any): Observable<any> {
-    let request = mainFunctions.requestData('category' , CategoryData);
-    let headers = new HttpHeaders({'Content-Type': 'multipart/form-data'});
-    return this.http.post(this._createCategoryUrl,request,{headers: headers});
+    let request = mainFunctions.requestData('category', CategoryData);
+    let headers = new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
+    return this.http.post(this._createCategoryUrl, request, {
+      headers: headers,
+    });
   }
 
   update(CategoryData: any): Observable<any> {
-    let request = mainFunctions.requestData('category' , CategoryData);
+    let request = mainFunctions.requestData('category', CategoryData);
 
     return this.http.post(this._updateCategoryUrl, request);
   }
 
   delete(CategoryData: any): Observable<any> {
-    let request = mainFunctions.requestData('category' , CategoryData);
+    let request = mainFunctions.requestData('category', CategoryData);
 
     return this.http.post(this._deleteCategoryUrl, request);
   }
 
   getByCode(CategoryData: any): Observable<any> {
-    let request = mainFunctions.requestData('category' , CategoryData);
+    let request = mainFunctions.requestData('category', CategoryData);
 
     return this.http.post(this._getCategoryByCodeUrl, request);
   }

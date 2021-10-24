@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { mainFunctions } from 'src/main';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AboutService {
 
@@ -31,25 +31,25 @@ export class AboutService {
     return this.http.post<any>(this._allActiveAboutsUrl, request);
   }
   create(AboutData: any): Observable<any> {
-    let request = mainFunctions.requestData('about' , AboutData);
+    let request = mainFunctions.requestData('about', AboutData);
 
-    return this.http.post(this._createAboutUrl,request);
+    return this.http.post(this._createAboutUrl, request);
   }
 
   update(AboutData: any): Observable<any> {
-    let request = mainFunctions.requestData('about' , AboutData);
+    let request = mainFunctions.requestData('about', AboutData);
 
     return this.http.post(this._updateAboutUrl, request);
   }
 
   delete(AboutData: any): Observable<any> {
-    let request = mainFunctions.requestData('about' , AboutData);
+    let request = mainFunctions.requestData('about', AboutData);
 
     return this.http.post(this._deleteAboutUrl, request);
   }
 
   getByCode(AboutData: any): Observable<any> {
-    let request = mainFunctions.requestData('about' , AboutData);
+    let request = mainFunctions.requestData('about', AboutData);
 
     return this.http.post(this._getAboutByCodeUrl, request);
   }

@@ -5,18 +5,17 @@ import { environment } from 'src/environments/environment';
 import { mainFunctions } from 'src/main';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CityService {
+  _allCitiesUrl = environment.apiUrl + '/lamaderas/v1/City/getCityList';
+  _createCityUrl = environment.apiUrl + '/lamaderas/v1/City/addCity';
+  _deleteCityUrl = environment.apiUrl + '/lamaderas/v1/City/deleteCity';
+  _updateCityUrl = environment.apiUrl + '/lamaderas/v1/City/updateCity';
+  _getCityByCodeUrl = environment.apiUrl + '/lamaderas/v1/City/getCityByCode';
 
-  _allCitiesUrl = environment.apiUrl+'/lamaderas/v1/City/getCityList';
-  _createCityUrl = environment.apiUrl+'/lamaderas/v1/City/addCity';
-  _deleteCityUrl = environment.apiUrl+'/lamaderas/v1/City/deleteCity';
-  _updateCityUrl = environment.apiUrl+'/lamaderas/v1/City/updateCity';
-  _getCityByCodeUrl = environment.apiUrl+'/lamaderas/v1/City/getCityByCode';
 
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getlist(): Observable<any> {
     let request = mainFunctions.requestData();
@@ -25,27 +24,25 @@ export class CityService {
   }
 
   create(CityData: any): Observable<any> {
-    let request = mainFunctions.requestData('city' , CityData);
-    return this.http.post(this._createCityUrl,request);
+    let request = mainFunctions.requestData('city', CityData);
+    return this.http.post(this._createCityUrl, request);
   }
 
   update(CityData: any): Observable<any> {
-    let request = mainFunctions.requestData('city' , CityData);
+    let request = mainFunctions.requestData('city', CityData);
 
     return this.http.post(this._updateCityUrl, request);
   }
 
   delete(CityData: any): Observable<any> {
-    let request = mainFunctions.requestData('city' , CityData);
+    let request = mainFunctions.requestData('city', CityData);
 
     return this.http.post(this._deleteCityUrl, request);
   }
 
   getByCode(CityData: any): Observable<any> {
-    let request = mainFunctions.requestData('city' , CityData);
+    let request = mainFunctions.requestData('city', CityData);
 
     return this.http.post(this._getCityByCodeUrl, request);
   }
-
-
 }
