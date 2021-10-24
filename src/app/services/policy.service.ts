@@ -8,7 +8,6 @@ import { mainFunctions } from 'src/main';
   providedIn: 'root',
 })
 export class PolicyService {
-<<<<<<< HEAD
 
   _allPolicysUrl = environment.apiUrl+'​/lamaderas/v1/Policy/getPolicyList';
   _allActivePolicysUrl = environment.apiUrl+'/lamaderas/v1/Policy/getActivePolicyList';
@@ -20,20 +19,7 @@ export class PolicyService {
 
 
   constructor(private http: HttpClient) { }
-=======
-  _allPolicysUrl = environment.apiUrl + '​/lamaderas/v1/Policy/getPolicyList';
-  _allActivePolicysUrl =
-    environment.apiUrl + '/lamaderas/v1/Policy/getActivePolicyList';
-  _createPolicyUrl = environment.apiUrl + '/lamaderas/v1/Policy/addPolicy';
-  _addPolicyImageUrl =
-    environment.apiUrl + '/lamaderas/v1/Policy/addPolicyImage';
-  _deletePolicyUrl = environment.apiUrl + '/lamaderas/v1/Policy/deletePolicy';
-  _updatePolicyUrl = environment.apiUrl + '/lamaderas/v1/Policy/updatePolicy';
-  _getPolicyByCodeUrl =
-    environment.apiUrl + '/lamaderas/v1/Policy/getPolicyByCode';
 
-  constructor(private http: HttpClient) {}
->>>>>>> 4ea7dc98bef855d125e1daf901a1b1f859c443a2
 
   getList(): Observable<any> {
     let request = mainFunctions.requestData();

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { NgbPaginationModule , NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserModule } from '@angular/platform-browser';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpConfigInterceptor } from './interceptors/httpconfig.interceptor';
@@ -117,7 +118,8 @@ import { AllActivePoliciesComponent } from './components/policies/all-active-pol
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
-    ErrorDialogService
+    ErrorDialogService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   entryComponents: [ErrorDialogComponent],
   bootstrap: [AppComponent]
