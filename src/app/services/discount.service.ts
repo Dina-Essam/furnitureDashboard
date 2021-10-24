@@ -9,12 +9,12 @@ import { mainFunctions } from 'src/main';
 })
 export class DiscountService {
 
-  _allDiscountsUrl = environment.apiUrl+'/lamaderas/v1/FIN/Discount/getDiscountList';
-  _updateDiscountUrl = environment.apiUrl+'/lamaderas/v1/FIN/Discount/updateDiscount';
+  _allDiscountsUrl = environment.apiUrl+'/lamaderas/v1/Discount/getDiscountList';
+  _updateDiscountUrl = environment.apiUrl+'/lamaderas/v1/Discount/updateDiscount';
 
-  _createDiscountUrl = environment.apiUrl+'/lamaderas/v1/FIN/Discount/addDiscount';
-  _deleteDiscountUrl = environment.apiUrl+'/lamaderas/v1/FIN/Discount/deleteDiscount';
-  _getDiscountByCodeUrl = environment.apiUrl+'/lamaderas/v1/FIN/Discount/getDiscountByCode';
+  _createDiscountUrl = environment.apiUrl+'/lamaderas/v1/Discount/addDiscount';
+  _deleteDiscountUrl = environment.apiUrl+'/lamaderas/v1/Discount/deleteDiscount';
+  _getDiscountByCodeUrl = environment.apiUrl+'/lamaderas/v1/Discount/getDiscountByCode';
 
   constructor(private http: HttpClient) { }
 

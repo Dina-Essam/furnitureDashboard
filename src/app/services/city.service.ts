@@ -9,11 +9,11 @@ import { mainFunctions } from 'src/main';
 })
 export class CityService {
 
-  _allCitiesUrl = environment.apiUrl+'/lamaderas/v1/ADM/City/getCityList';
-  _createCityUrl = environment.apiUrl+'/lamaderas/v1/ADM/City/addCity';
-  _deleteCityUrl = environment.apiUrl+'/lamaderas/v1/ADM/City/deleteCity';
-  _updateCityUrl = environment.apiUrl+'/lamaderas/v1/ADM/City/updateCity';
-  _getCityByCodeUrl = environment.apiUrl+'/lamaderas/v1/ADM/City/getCityByCode';
+  _allCitiesUrl = environment.apiUrl+'/lamaderas/v1/City/getCityList';
+  _createCityUrl = environment.apiUrl+'/lamaderas/v1/City/addCity';
+  _deleteCityUrl = environment.apiUrl+'/lamaderas/v1/City/deleteCity';
+  _updateCityUrl = environment.apiUrl+'/lamaderas/v1/City/updateCity';
+  _getCityByCodeUrl = environment.apiUrl+'/lamaderas/v1/City/getCityByCode';
 
 
   constructor(private http: HttpClient) { }

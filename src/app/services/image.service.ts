@@ -10,8 +10,8 @@ import { mainFunctions } from 'src/main';
 export class ImageService {
 
   
-  _deleteImageUrl = environment.apiUrl+'/lamaderas/v1/GNR/Image/deleteImage';
-  _updateImageUrl = environment.apiUrl+'/lamaderas/v1/GNR/Image/updateImage';
+  _deleteImageUrl = environment.apiUrl+'/lamaderas/v1/Image/deleteImage';
+  _updateImageUrl = environment.apiUrl+'/lamaderas/v1/Image/updateImage';
 
 
   constructor(private http: HttpClient) { }

@@ -9,8 +9,8 @@ import { mainFunctions } from 'src/main';
 })
 export class TaxesService {
 
-  _allTaxessUrl = environment.apiUrl+'/lamaderas/v1/FIN/Taxes/getTaxesList';
-  _updateTaxesUrl = environment.apiUrl+'/lamaderas/v1/FIN/Taxes/updateTaxes';
+  _allTaxessUrl = environment.apiUrl+'/lamaderas/v1/Taxes/getTaxesList';
+  _updateTaxesUrl = environment.apiUrl+'/lamaderas/v1/Taxes/updateTaxes';
 
   constructor(private http: HttpClient) { }
 

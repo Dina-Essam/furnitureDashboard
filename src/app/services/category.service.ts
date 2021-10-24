@@ -9,11 +9,11 @@ import { mainFunctions } from 'src/main';
 })
 export class CategoryService {
 
-  _allCategoriesUrl = environment.apiUrl+'/lamaderas/v1/ADM/Category/getCategoryList';
-  _createCategoryUrl = environment.apiUrl+'/lamaderas/v1/ADM/Category/addCategory';
-  _deleteCategoryUrl = environment.apiUrl+'/lamaderas/v1/ADM/Category/deleteCategory';
-  _updateCategoryUrl = environment.apiUrl+'/lamaderas/v1/ADM/Category/updateCategory';
-  _getCategoryByCodeUrl = environment.apiUrl+'/lamaderas/v1/ADM/Category/getCategoryByCode';
+  _allCategoriesUrl = environment.apiUrl+'/lamaderas/v1/Category/getCategoryList';
+  _createCategoryUrl = environment.apiUrl+'/lamaderas/v1/Category/addCategory';
+  _deleteCategoryUrl = environment.apiUrl+'/lamaderas/v1/Category/deleteCategory';
+  _updateCategoryUrl = environment.apiUrl+'/lamaderas/v1/Category/updateCategory';
+  _getCategoryByCodeUrl = environment.apiUrl+'/lamaderas/v1/Category/getCategoryByCode';
 
   constructor(private http: HttpClient) { }
 

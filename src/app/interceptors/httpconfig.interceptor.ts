@@ -52,6 +52,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
         request = request.clone({ headers: request.headers.set('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token') });
 
         return next.handle(request).pipe(tap((event: HttpEvent<any>) => {
+            // console.log(event);
             if (event instanceof HttpResponse) {
                 if(event.body.result.status == '500')
                     this.router.navigate(['/serverError']);
@@ -69,6 +70,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
             }
         }),
         catchError((error: HttpErrorResponse) => {
+            // console.log(error);
             if(error.status == 500)
                     this.router.navigate(['/serverError']);
             else if (error.status == 401) 

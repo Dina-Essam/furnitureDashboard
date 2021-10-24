@@ -9,7 +9,7 @@ import { mainFunctions } from 'src/main';
   providedIn: 'root'
 })
 export class AuthService {
-  _loginUrl = environment.apiUrl+'/lamaderas/v1/ADM/Admin/login';
+  _loginUrl = environment.apiUrl+'/lamaderas/v1/Admin/login';
 
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private readonly JWT_ADMINDATA = 'JWT_ADMINDATA';

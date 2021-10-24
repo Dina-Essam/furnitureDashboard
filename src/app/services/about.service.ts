@@ -9,13 +9,13 @@ import { mainFunctions } from 'src/main';
 })
 export class AboutService {
 
-  _allAboutsUrl = environment.apiUrl+'​/lamaderas/v1/ADM/About/getAboutList';
-  _allActiveAboutsUrl = environment.apiUrl+'/lamaderas/v1/ADM/About/getActiveAboutList';
-  _createAboutUrl = environment.apiUrl+'/lamaderas/v1/ADM/About/addAbout';
-  _addAboutImageUrl =  environment.apiUrl+'/lamaderas/v1/ADM/About/addAboutImage';
-  _deleteAboutUrl = environment.apiUrl+'/lamaderas/v1/ADM/About/deleteAbout';
-  _updateAboutUrl = environment.apiUrl+'/lamaderas/v1/ADM/About/updateAbout';
-  _getAboutByCodeUrl = environment.apiUrl+'/lamaderas/v1/ADM/About/getAboutByCode';
+  _allAboutsUrl = environment.apiUrl+'​/lamaderas/v1/About/getAboutList';
+  _allActiveAboutsUrl = environment.apiUrl+'/lamaderas/v1/About/getActiveAboutList';
+  _createAboutUrl = environment.apiUrl+'/lamaderas/v1/About/addAbout';
+  _addAboutImageUrl =  environment.apiUrl+'/lamaderas/v1/About/addAboutImage';
+  _deleteAboutUrl = environment.apiUrl+'/lamaderas/v1/About/deleteAbout';
+  _updateAboutUrl = environment.apiUrl+'/lamaderas/v1/About/updateAbout';
+  _getAboutByCodeUrl = environment.apiUrl+'/lamaderas/v1/About/getAboutByCode';
 
 
   constructor(private http: HttpClient) { }

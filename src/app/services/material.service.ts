@@ -9,11 +9,11 @@ import { mainFunctions } from 'src/main';
 })
 export class MaterialService {
 
-  _allMaterialsUrl = environment.apiUrl+'/lamaderas/v1/PROD/Material/getMaterialList';
-  _createMaterialUrl = environment.apiUrl+'/lamaderas/v1/PROD/Material/addMaterial';
-  _deleteMaterialUrl = environment.apiUrl+'/lamaderas/v1/PROD/Material/deleteMaterial';
-  _updateMaterialUrl = environment.apiUrl+'/lamaderas/v1/PROD/Material/updateMaterial';
-  _getMaterialByCodeUrl = environment.apiUrl+'/lamaderas/v1/PROD/Material/getMaterialByCode';
+  _allMaterialsUrl = environment.apiUrl+'/lamaderas/v1/Material/getMaterialList';
+  _createMaterialUrl = environment.apiUrl+'/lamaderas/v1/Material/addMaterial';
+  _deleteMaterialUrl = environment.apiUrl+'/lamaderas/v1/Material/deleteMaterial';
+  _updateMaterialUrl = environment.apiUrl+'/lamaderas/v1/Material/updateMaterial';
+  _getMaterialByCodeUrl = environment.apiUrl+'/lamaderas/v1/Material/getMaterialByCode';
 
 
   constructor(private http: HttpClient) { }

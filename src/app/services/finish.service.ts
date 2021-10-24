@@ -9,11 +9,11 @@ import { mainFunctions } from 'src/main';
 })
 export class FinishService {
 
-  _allFinishesUrl = environment.apiUrl+'/lamaderas/v1/PROD/Finish/getFinishList';
-  _createFinishUrl = environment.apiUrl+'/lamaderas/v1/PROD/Finish/addFinish';
-  _deleteFinishUrl = environment.apiUrl+'/lamaderas/v1/PROD/Finish/deleteFinish';
-  _updateFinishUrl = environment.apiUrl+'/lamaderas/v1/PROD/Finish/updateFinish';
-  _getFinishByCodeUrl = environment.apiUrl+'/lamaderas/v1/PROD/Finish/getFinishByCode';
+  _allFinishesUrl = environment.apiUrl+'/lamaderas/v1/Finish/getFinishList';
+  _createFinishUrl = environment.apiUrl+'/lamaderas/v1/Finish/addFinish';
+  _deleteFinishUrl = environment.apiUrl+'/lamaderas/v1/Finish/deleteFinish';
+  _updateFinishUrl = environment.apiUrl+'/lamaderas/v1/Finish/updateFinish';
+  _getFinishByCodeUrl = environment.apiUrl+'/lamaderas/v1/Finish/getFinishByCode';
 
 
   constructor(private http: HttpClient) { }
