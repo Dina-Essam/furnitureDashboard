@@ -46,7 +46,7 @@ export class AllCategoryDetailsComponent implements OnInit {
         else
         {
           this.loading=false;
-          this.router.navigate(['/dashboard/materials']);
+          this.router.navigate(['/dashboard/categories']);
         }
 
       },

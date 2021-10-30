@@ -1,0 +1,418 @@
+
+        <div class="pcoded-content">
+            <!-- Page-header start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Create Product</h5>
+                                <p class="m-b-0">Welcome to La Maderas</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <ul class="breadcrumb-title">
+                                <li class="breadcrumb-item">
+                                    <a [routerLink]="['/dashboard']"> <i class="fa fa-home"></i> </a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a [routerLink]="['/dashboard/products']">Products</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a>Create Category</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page-header end -->
+              <div class="pcoded-inner-content">
+                  <!-- Main-body start -->
+                  <div class="main-body">
+                      <div class="page-wrapper">
+                          <!-- Page-body start -->
+                          <div class="page-body">
+                              <div class="row">
+                                  <!-- task, page, download counter  start -->
+                                  <!-- Hover table card start -->
+                                  <div class="col">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Create Product</h5>
+                                        </div>
+                                        <div class="card-block">
+                                            <form class="form-material" [formGroup] ="createProductForm" (ngSubmit)="CreateProduct()" >
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="text" name="prodNameAr" class="form-control" required
+                                                        formControlName="prodNameAr"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.prodNameAr.errors }"
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">Product Name in Arabic</label>
+                                                    <div *ngIf="submitted && f.prodNameAr.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.prodNameAr.errors!.required">Product Name in Arabic is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.prodNameAr.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.prodNameAr.errors?.serverError }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="text" name="prodNameEn" class="form-control" required 
+                                                    formControlName="prodNameEn"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.prodNameEn.errors }"
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">product Name in English</label>
+                                                    <div *ngIf="submitted && f.prodNameEn.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.prodNameEn.errors!.required">Product Name in English is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.prodNameEn.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.prodNameEn.errors?.serverError }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="text" name="prodDscAr" class="form-control" required 
+                                                    formControlName="prodDscAr"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.prodDscAr.errors }"
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">Product Description Name in Arabic</label>
+                                                    <div *ngIf="submitted && f.prodDscAr.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.prodDscAr.errors!.required">Product Description in Arabic is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.prodDscAr.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.prodDscAr.errors?.serverError }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="text" name="prodDscEn" class="form-control" required 
+                                                    formControlName="prodDscEn"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.prodDscEn.errors }"
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">Product Description Name in English</label>
+                                                    <div *ngIf="submitted && f.prodDscEn.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.prodDscEn.errors!.required">Product Description in English is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.prodDscEn.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.prodDscEn.errors?.serverError }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="file" accept="image/*" class="form-control" 
+                                                        (change)="handleFile($event)" multiple
+                                                        [ngClass]="{ 'is-invalid': submitted && f.images.errors }"
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">Product Images</label>
+                                                    <div *ngIf="submitted && f.images.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.images.errors!.required">Product Images is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.images.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.images.errors?.serverError }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="number" name="prodPrice" class="form-control" required 
+                                                    formControlName="prodPrice" step="any"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.prodPrice.errors }"
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">Product Price</label>
+                                                    <div *ngIf="submitted && f.prodPrice.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.prodPrice.errors!.required">Product Price is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.prodPrice.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.prodPrice.errors?.serverError }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="number" name="prodQuantity" class="form-control" required 
+                                                    formControlName="prodQuantity"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.prodQuantity.errors }"
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">Product Quantity</label>
+                                                    <div *ngIf="submitted && f.prodQuantity.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.prodQuantity.errors!.required">Product Quantity is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.prodQuantity.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.prodQuantity.errors?.serverError }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="number" name="dimHight" class="form-control" required 
+                                                    formControlName="dimHight" step="any"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.dimHight.errors }"
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">Product Hight</label>
+                                                    <div *ngIf="submitted && f.dimHight.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.dimHight.errors!.required">Product Hight is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.dimHight.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.dimHight.errors?.serverError }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="number" name="dimWidth" class="form-control" required 
+                                                    formControlName="dimWidth" step="any"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.dimWidth.errors }"
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">Product Width</label>
+                                                    <div *ngIf="submitted && f.dimWidth.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.dimWidth.errors!.required">Product Width is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.dimWidth.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.dimWidth.errors?.serverError }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="number" name="dimDepth" class="form-control" required 
+                                                    formControlName="dimDepth" step="any"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.dimDepth.errors }"
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">Product Depth</label>
+                                                    <div *ngIf="submitted && f.dimDepth.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.dimDepth.errors!.required">Product Depth is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.dimDepth.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.dimDepth.errors?.serverError }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-default pb-2">
+                                                    <input type="number" name="warranty" class="form-control" required 
+                                                    formControlName="warranty"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.warranty.errors }"
+                                                    >
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label">Product warranty</label>
+                                                    <div *ngIf="submitted && f.warranty.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.warranty.errors!.required">Product warranty is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.warranty.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.warranty.errors?.serverError }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-default pb-2">
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Product Style</mat-label>
+                                                        <mat-select 
+                                                            name="styleNo"
+                                                            formControlName="styleNo" 
+                                                            [ngClass]="{ 'is-invalid': submitted && f.styleNo.errors }"
+                                                            required>
+                                                        <mat-option *ngFor="let style of styleList" [value]="style.styleNo">
+                                                            {{style.styleNm}}
+                                                        </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <span class="form-bar"></span>
+                                                    <div *ngIf="submitted && f.styleNo.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.styleNo.errors!.required">Product Style is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.styleNo.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.styleNo.errors?.serverError }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-default pb-2">
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Product Finish</mat-label>
+                                                        <mat-select 
+                                                            name="finishNo"
+                                                            formControlName="finishNo" 
+                                                            [ngClass]="{ 'is-invalid': submitted && f.finishNo.errors }"
+                                                            required>
+                                                        <mat-option *ngFor="let finish of finishList" [value]="finish.finishNo">
+                                                            {{finish.finishNm}}
+                                                        </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <span class="form-bar"></span>
+                                                    <div *ngIf="submitted && f.finishNo.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.finishNo.errors!.required">Product Finish is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.finishNo.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.finishNo.errors?.serverError }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-default pb-2">
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Product Category</mat-label>
+                                                        <mat-select 
+                                                            name="catNo"
+                                                            formControlName="catNo" 
+                                                            [ngClass]="{ 'is-invalid': submitted && f.catNo.errors }"
+                                                            required>
+                                                        <mat-option *ngFor="let cat of categoryList" [value]="cat.catNo">
+                                                            {{cat.categoryName}}
+                                                        </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <span class="form-bar"></span>
+                                                    <div *ngIf="submitted && f.catNo.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.catNo.errors!.required">Product Category is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.catNo.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.catNo.errors?.serverError }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-default pb-2">
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Product Discount</mat-label>
+                                                        <mat-select 
+                                                            name="discountNo"
+                                                            formControlName="discountNo" 
+                                                            [ngClass]="{ 'is-invalid': submitted && f.discountNo.errors }"
+                                                            required>
+                                                        <mat-option *ngFor="let discount of discountList" [value]="discount.discountNo">
+                                                            {{discount.discountRate}}
+                                                        </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <span class="form-bar"></span>
+                                                    <div *ngIf="submitted && f.discountNo.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.discountNo.errors!.required">Product Discount is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.discountNo.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.discountNo.errors?.serverError }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-default pb-2">
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Product Tax</mat-label>
+                                                        <mat-select 
+                                                            name="taxNo"
+                                                            formControlName="taxNo" 
+                                                            [ngClass]="{ 'is-invalid': submitted && f.taxNo.errors }"
+                                                            required>
+                                                        <mat-option *ngFor="let tax of taxes" [value]="tax.taxNo">
+                                                            {{tax.percentage}}
+                                                        </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <span class="form-bar"></span>
+                                                    <div *ngIf="submitted && f.taxNo.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.taxNo.errors!.required">Product Tax is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.taxNo.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.taxNo.errors?.serverError }}
+                                                    </div>
+                                                </div>
+
+<!-- -------------------------------------------------------------------------- -->
+
+                                                <div class="form-group form-default pb-2">
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Materials</mat-label>
+                                                        <mat-select 
+                                                            name="prodMaterialList"
+                                                            formControlName="prodMaterialList" 
+                                                            [ngClass]="{ 'is-invalid': submitted && f.prodMaterialList.errors }"
+                                                            required multiple>
+                                                          <mat-option *ngFor="let material of materialList" [value]="material">
+                                                            {{material.materialNm}}
+                                                          </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <span class="form-bar"></span>
+                                                    <div *ngIf="submitted && f.prodMaterialList.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.prodMaterialList.errors!.required">Materials is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.prodMaterialList.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.prodMaterialList.errors?.serverError }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-default pb-2">
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>Colours</mat-label>
+                                                        <mat-select 
+                                                            name="prodColorList"
+                                                            formControlName="prodColorList" 
+                                                            [ngClass]="{ 'is-invalid': submitted && f.prodColorList.errors }"
+                                                            required multiple>
+                                                            <mat-option *ngFor="let color of colorList" [value]="color">
+                                                                {{color.colorNm}}
+                                                                <div class='p-1' [ngStyle]="{'background-color': color.colorCode}"></div>
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <span class="form-bar"></span>
+                                                    <div *ngIf="submitted && f.prodColorList.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.prodColorList.errors!.required">Colours is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.prodColorList.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.prodColorList.errors?.serverError }}
+                                                    </div>
+                                                </div>
+<!-- ------------------------------------------------------------------------------------------------------------------ -->
+                                                <div *ngFor="let color of f.prodColorList.value">
+                                                    <h4>Product of color {{color.colorNm}}</h4>
+                                                    <div class="form-group form-default pb-2">
+                                                        <mat-form-field appearance="fill">
+                                                            <mat-label>Secound Colour</mat-label>
+                                                            <mat-select 
+                                                                (selectionChange)="addSubColor($event.value ,color)"
+                                                                required>
+                                                                <mat-option value={{null}} selected>No Secound Colour</mat-option>
+                                                                <mat-option *ngFor="let color of colorList" [value]="color.colorNo">
+                                                                    {{color.colorNm}}
+                                                                    <div class='p-1' [ngStyle]="{'background-color': color.colorCode}"></div>
+                                                                </mat-option>
+                                                            </mat-select>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------ -->
+
+                                                <div class="form-group form-default pb-2">
+                                                    <mat-slide-toggle formControlName="prodAvailability"
+                                                        [ngClass]="{ 'is-invalid': submitted && f.prodAvailability.errors }" required>
+                                                        Product Availability
+                                                    </mat-slide-toggle>
+                                                    <span class="form-bar"></span>
+                                                    <div *ngIf="submitted && f.prodAvailability.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.prodAvailability.errors!.required">Product Availability is required</div>
+                                                    </div>
+                                                    <div *ngIf="f.prodAvailability.errors?.serverError" class="invalid-feedback">
+                                                        {{ f.prodAvailability.errors?.serverError }}
+                                                    </div>
+
+                                                </div>
+
+
+                                                <button type="submit" class="btn btn-primary base-bg border-base btn-md waves-effect waves-light text-center float-right mr-5">Create</button>
+                                            </form>
+                                            <app-spinner [loading]="loading"></app-spinner>
+                                        </div>
+                                    </div>
+                                </div>
+                                  <!-- Hover table card end -->
+                                  <!--  project and team member end -->
+                              </div>
+                          </div>
+                          <!-- Page-body end -->
+                      </div>
+                      <div id="styleSelector"> </div>
+                  </div>
+              </div>
+        </div>
+    

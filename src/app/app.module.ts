@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { NgbPaginationModule , NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import { MatCardModule } from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { BrowserModule } from '@angular/platform-browser';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -56,6 +58,8 @@ import { EditPolicyComponent } from './components/policies/edit-policy/edit-poli
 import { CreatePolicyComponent } from './components/policies/create-policy/create-policy.component';
 import { AllPoliciesComponent } from './components/policies/all-policies/all-policies.component';
 import { AllActivePoliciesComponent } from './components/policies/all-active-policies/all-active-policies.component';
+import { AllProductsComponent } from './components/products/all-products/all-products.component';
+import { CreateProductComponent } from './components/products/create-product/create-product.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +105,9 @@ import { AllActivePoliciesComponent } from './components/policies/all-active-pol
     EditPolicyComponent,
     CreatePolicyComponent,
     AllPoliciesComponent,
-    AllActivePoliciesComponent
+    AllActivePoliciesComponent,
+    AllProductsComponent,
+    CreateProductComponent
     ],
   imports: [
     BrowserModule,
@@ -114,7 +120,9 @@ import { AllActivePoliciesComponent } from './components/policies/all-active-pol
     NgbCarouselModule,
     HttpClientModule,
     FontAwesomeModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule,
+    MatSlideToggleModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },

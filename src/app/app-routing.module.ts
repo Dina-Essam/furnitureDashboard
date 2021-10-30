@@ -39,6 +39,8 @@ import { AllPoliciesComponent } from './components/policies/all-policies/all-pol
 import { AllActivePoliciesComponent } from './components/policies/all-active-policies/all-active-policies.component';
 import { CreatePolicyComponent } from './components/policies/create-policy/create-policy.component';
 import { EditPolicyComponent } from './components/policies/edit-policy/edit-policy.component';
+import { AllProductsComponent } from './components/products/all-products/all-products.component';
+import { CreateProductComponent } from './components/products/create-product/create-product.component';
 
 const routes =[
   {
@@ -222,6 +224,21 @@ const routes =[
       {
         path: 'policies-active',
         component: AllActivePoliciesComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'products',
+        component: AllProductsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'products/details-product/:id',
+        component: AllCategoryDetailsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'products/create-product',
+        component: CreateProductComponent,
         canActivate: [AuthGuard],
       },
 
